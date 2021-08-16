@@ -1,9 +1,7 @@
 {
-    "files": [],
-    "references": [
-        { "path": "./packages/graphql/src/tsconfig.json" },
-        { "path": "./packages/ogm/src/tsconfig.json" },
-        { "path": "./examples/neo-push/client/src/tsconfig.json" },
-        { "path": "./examples/neo-push/server/src/tsconfig.json" }
-    ]
+  "files": [],
+  "references": [
+    { "path": "./packages/neo-push/client/src/tsconfig.json" },
+    { "path": "./packages/neo-push/server/src/tsconfig.json" }
+  ]
 }
