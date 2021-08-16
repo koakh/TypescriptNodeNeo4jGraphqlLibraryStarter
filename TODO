@@ -1,3 +1,6 @@
 Server Starter:
-  ☐ add ssl/tls
+  ☐ add debugger
+  ☐ add watch to script
+  ☐ add ssl/tls, get form BuildingGraphQLAPIsUsingTheNeo4jGraphQLLibrary
+    seems that is better to use caddy to serve it and refresh certificates
 

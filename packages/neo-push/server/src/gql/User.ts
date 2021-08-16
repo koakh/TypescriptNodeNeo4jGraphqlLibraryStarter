@@ -1,6 +1,6 @@
-import { gql } from "apollo-server-express";
-import { Context } from "../types";
-import { comparePassword, createJWT, hashPassword } from "../utils";
+import { gql } from 'apollo-server-express';
+import { Context } from '../types';
+import { comparePassword, createJWT, hashPassword } from '../utils';
 
 async function signUp(_root, args: { email: string; password: string }, context: Context) {
   const User = context.ogm.model("User");

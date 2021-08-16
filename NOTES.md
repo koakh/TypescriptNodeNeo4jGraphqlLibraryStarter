@@ -64,6 +64,77 @@ edit `tsconfig.json` and remove bellow lines and replace `examples` with `packag
 }
 ```
 
+### tsconfig.json server
+
+`packages/neo-push/server/src/tsconfig.json`
+
+change
+
+```json
+{
+  "extends": "../../../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "../dist",
+    "paths": {
+      "@neo4j/graphql": ["../../../../packages/graphql/src"],
+      "@neo4j/graphql-ogm": ["../../../../packages/ogm/src"]
+    },
+    "target": "ES2019"
+  },
+  "references": [
+    { "path": "../../../../packages/graphql/src/tsconfig.json" },
+    { "path": "../../../../packages/ogm/src/tsconfig.json" }
+  ]
+}
+```
+
+with
+
+```json
+{
+  "extends": "../../../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "../dist",
+    "target": "ES2019"
+  }
+}
+```
+
+`packages/neo-push/server/tests/tsconfig.json`
+
+change
+
+```json
+{
+  "extends": "../../../../tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["node", "jest"],
+    "paths": {
+      "@neo4j/graphql": ["../../../../packages/graphql/src"],
+      "@neo4j/graphql-ogm": ["../../../../packages/ogm/src"]
+    }
+  },
+  "references": [
+    { "path": "../src/tsconfig.json" },
+    { "path": "../../../../packages/ogm/src/tsconfig.json" },
+    { "path": "../../../../packages/graphql/src/tsconfig.json" }
+  ]
+}
+```
+
+with
+
+```json
+{
+  "extends": "../../../../tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["node", "jest"]
+  }
+}
+```
+
 ### Eslit
 
 edit `.eslintrc.js` and change `examples/neo-push` to `packages/neo-push`
