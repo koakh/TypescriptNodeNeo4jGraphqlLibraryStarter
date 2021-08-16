@@ -79,17 +79,41 @@ $ code packages/neo-push/server/.env
 $ code packages/neo-push/client/.env
 ```
 
-1. update all packages to latest releases, but leave `jest` without changes
-2. replace `"apollo-server-express": "2.19.0"` with `"apollo-server": "3.1.2"`
+1. update all packages to latest releases, with `npm npm-check -u`
 
 ```shell
 # yarn workspaces install dependencies
-$ yarn install
+$ yarn
 ```
+
+## Fix Apollo Server 3.0
+
+```shell
+Error: You must `await server.start()` before calling `server.applyMiddleware()`
+```
+
+`packages/neo-push/server/src/server.ts`
+
+```typescript
+export const app = express();
+// remove bellow line
+// graphql.server.applyMiddleware({ app });
+
+...
+// export function start(): Promise<void> {
+// add async
+export async function start(): Promise<void> {
+  debug(`Starting on PORT ${config.HTTP_PORT}`);
+  // add bellow lines to start server and apply middleware
+  await graphql.server.start();
+  graphql.server.applyMiddleware({ app });
+```
+
+> now when we run project, after seed etc, we have apollo studio at <http://localhost:5000/graphql>
 
 ## Seed
 
-fix adding `node:`
+fix `seeder.ts` adding `node:`
 
 ```json
 posts: {
