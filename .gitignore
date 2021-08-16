@@ -90,4 +90,4 @@ packages/package-tests/**/package-lock.json
 !.yarn/versions
 .pnp.*
 
-tsconfig.tsbuildinfo
+tsconfig.tsbuildinfo.bak
