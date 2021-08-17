@@ -258,3 +258,60 @@ $ yarn run neo-push
 
 ## Change NeoPush project to Other name
 
+`package.json`
+
+```json
+{
+  "name": "@koakh/typescript-node-neo4j-graphql-library-starter",
+  "author": "koakh",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koakh/TypescriptNodeNeo4jGraphqlLibraryStarter.git"
+  },
+```
+
+1. change all `neo-push` string with `neo4j-gql-starter`
+2. `mv packages/neo-push/ packages/neo4j-gql-starter` mv .yarnrc.yml .yarnrc.yml_
+3. run `yarn install` to reconfigure workspaces
+4. `npm run neo4j-gql-starter`https://stackoverflow.com/questions/64722201/yarn-command-yarn-import-error-this-package-doesnt-seem-to-be-present-in-you
+mv .yarnrc.yml_ .yarnrc.yml....Internal Error: @koakh/typescript-node-neo4j-graphql-library-starter@workspace:.: This package doesn't seem to be present in your lockfile; try to make an install to update your resolutions...fix with yarn set version from sources......fixed in 2.4.2 fix with yarn set version 2.4.2
+
+
+
+$ yarn -v
+2.4.1
+# fix
+$ yarn set version berry && yarn set version 2.4.2
+➤ YN0000: Downloading https://github.com/yarnpkg/berry/raw/%40yarnpkg/cli/2.4.2/packages/yarnpkg-cli/bin/yarn.js
+➤ YN0000: Saving the new release in .yarn/releases/yarn-2.4.2.cjs
+➤ YN0000: Done in 21s 491ms
+$ yarn -v
+2.4.2
+
+# wait....now it will finish the install and update yarn.lock with workspaces, and `npm run neo4j-gql-starter` start working again
+$ yarn install
+➤ YN0000: └ Completed in 14s 483ms
+➤ YN0000: Done with warnings in 2m 9s
+
+
+
+# fix some deprecated packages
+➤ YN0061: │ apollo-tracing@npm:0.15.0 is deprecated: The `apollo-tracing` package is no longer part of Apollo Server 3. See https://www.apollographql.com/docs/apollo-server/migration/#tracing for details
+➤ YN0061: │ graphql-extensions@npm:0.15.0 is deprecated: The `graphql-extensions` API has been removed from Apollo Server 3. Use the plugin API instead: https://www.apollographql.com/docs/apollo-server/integrations/plugins/
+➤ YN0061: │ apollo-cache-control@npm:0.14.0 is deprecated: The functionality provided by the `apollo-cache-control` package is built in to `apollo-server-core` starting with Apollo Server 3. See https://www.apollographql.com/docs/apollo-server/migration/#cachecontrol for details.
+➤ YN0061: │ graphql-tools@npm:4.0.8 is deprecated: This package has been deprecated and now it only exports makeExecutableSchema.\nAnd it will no longer receive updates.\nWe recommend you to migrate to scoped packages such as @graphql-tools/schema, @graphql-tools/utils and etc.\nCheck out https://www.graphql-tools.com to learn what package you should use instead
+
+
+
+
+[remote "origin"]
+	url = https://github.com/neo4j/graphql.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+
+with
+
+[remote "origin"]
+	url = https://github.com/koakh/TypescriptNodeNeo4jGraphqlLibraryStarter.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+
+

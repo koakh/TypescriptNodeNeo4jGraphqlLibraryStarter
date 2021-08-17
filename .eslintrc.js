@@ -87,7 +87,7 @@ module.exports = {
       },
     },
     {
-      files: ["packages/neo-push/client/**/*.tsx"],
+      files: ["packages/neo4j-gql-starter/client/**/*.tsx"],
       ...typeScriptParser,
       extends: ["airbnb-typescript"],
       rules: {
@@ -100,7 +100,7 @@ module.exports = {
       },
     },
     {
-      files: ["packages/neo-push/server/**/*.ts"],
+      files: ["packages/neo4j-gql-starter/server/**/*.ts"],
       ...typeScriptParser,
       extends: baseTypeScriptExtends,
       rules: {

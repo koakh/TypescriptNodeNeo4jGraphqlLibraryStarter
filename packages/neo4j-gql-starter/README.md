@@ -1,4 +1,4 @@
-# neo-push
+# neo4j-gql-starter
 
 Example blog site built with Neo4j GraphQL & React.js. This application showcases features of Neo4j GraphQL such as;
 
@@ -90,7 +90,7 @@ $ cd graphql && yarn install
 Run Seeder on;
 
 ```
-$ yarn run neo-push:seed
+$ yarn run neo4j-gql-starter:seed
 ```
 
 > Checkout the seeder its using the OGM
@@ -103,7 +103,7 @@ $ yarn run neo-push:seed
 Run the webpack and graphql servers with;
 
 ```
-$ yarn run neo-push
+$ yarn run neo4j-gql-starter
 ```
 
 Navigate to http://localhost:4000 and sign up!

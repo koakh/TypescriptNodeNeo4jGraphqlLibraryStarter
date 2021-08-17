@@ -3,7 +3,7 @@ import { Card, Row, Container } from "react-bootstrap";
 import * as markdown from "./Markdown";
 
 const content = `
-# neo-push
+# neo4j-gql-starter
 
 Example blog site built with \`@neo4j/graphql\` & React.js. This application showcases features of \`@neo4j/graphql\` such as;
 

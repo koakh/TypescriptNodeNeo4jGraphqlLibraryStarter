@@ -1,7 +1,7 @@
 {
   "files": [],
   "references": [
-    { "path": "./packages/neo-push/client/src/tsconfig.json" },
-    { "path": "./packages/neo-push/server/src/tsconfig.json" }
+    { "path": "./packages/neo4j-gql-starter/client/src/tsconfig.json" },
+    { "path": "./packages/neo4j-gql-starter/server/src/tsconfig.json" }
   ]
 }

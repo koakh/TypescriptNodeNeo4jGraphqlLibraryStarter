@@ -1,14 +1,14 @@
 {
-  "name": "neo4j-graphql",
-  "author": "Neo4j Inc.",
+  "name": "@koakh/typescript-node-neo4j-graphql-library-starter",
+  "author": "koakh",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/neo4j/graphql.git"
+    "url": "git+https://github.com/koakh/TypescriptNodeNeo4jGraphqlLibraryStarter.git"
   },
   "private": true,
   "workspaces": [
-    "packages/neo-push/server",
-    "packages/neo-push/client",
+    "packages/neo4j-gql-starter/server",
+    "packages/neo4j-gql-starter/client",
     "packages/migration"
   ],
   "scripts": {
@@ -16,9 +16,9 @@
     "lint": "eslint .",
     "test": "jest",
     "test:pr": "run-s lint test",
-    "neo-push": "concurrently \"yarn workspace neo-push-server start\" \"yarn workspace neo-push-client start\"",
-    "neo-push:server": "yarn workspace neo-push-server start",
-    "neo-push:seed": "yarn workspace neo-push-server run seed",
+    "neo4j-gql-starter": "concurrently \"yarn workspace neo4j-gql-starter-server start\" \"yarn workspace neo4j-gql-starter-client start\"",
+    "neo4j-gql-starter:server": "yarn workspace neo4j-gql-starter-server start",
+    "neo4j-gql-starter:seed": "yarn workspace neo4j-gql-starter-server run seed",
     "conditional-publish": "yarn workspaces foreach --include \"@neo4j/*\" run conditional-publish"
   },
   "devDependencies": {
