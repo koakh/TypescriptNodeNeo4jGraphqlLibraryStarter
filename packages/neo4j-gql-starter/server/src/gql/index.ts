@@ -1,13 +1,13 @@
-import { ApolloServer } from 'apollo-server-express';
 import { Neo4jGraphQL } from '@neo4j/graphql';
 import { OGM } from '@neo4j/graphql-ogm';
-import { driver } from '../neo4j';
-import { Context } from '../types';
-import * as User from './User';
+import { ApolloServer } from 'apollo-server-express';
+import * as config from 'app/config';
+import { driver } from 'app/neo4j';
+import { Context } from 'types/types';
 import * as Blog from './Blog';
-import * as Post from './Post';
 import * as Comment from './Comment';
-import * as config from '../config';
+import * as Post from './Post';
+import * as User from './User';
 
 export const typeDefs = [User.typeDefs, Blog.typeDefs, Post.typeDefs, Comment.typeDefs];
 

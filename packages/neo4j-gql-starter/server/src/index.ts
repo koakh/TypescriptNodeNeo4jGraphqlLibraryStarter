@@ -1,8 +1,8 @@
+import { createDebugger } from 'app/debugger';
+import * as neo4j from 'app/neo4j';
 import * as server from './server';
-import * as neo4j from './neo4j';
-import createDebug from './debugger';
 
-const debug = createDebug('Application');
+const debug = createDebugger('Application');
 
 async function main() {
   debug('Starting');

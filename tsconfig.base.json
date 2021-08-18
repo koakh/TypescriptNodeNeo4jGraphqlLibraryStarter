@@ -1,16 +1,16 @@
 {
-    "compilerOptions": {
-        "composite": true,
-        "declaration": true,
-        "declarationMap": true,
-        "esModuleInterop": true,
-        "module": "commonjs",
-        "skipLibCheck": true,
-        "sourceMap": true,
-        "strict": true,
-        "target": "es6",
-        // TODO Refactor so that noImplicitAny is no longer needed
-        "noImplicitAny": false,
-        "resolveJsonModule": true
-    }
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "es6",
+    // TODO: Refactor so that noImplicitAny is no longer needed
+    "noImplicitAny": false,
+    "resolveJsonModule": true,
+  }
 }

@@ -1,10 +1,11 @@
 import faker from 'faker';
-import { ogm } from './gql';
-import * as neo4j from './neo4j';
-import createDebug from './debugger';
-import { hashPassword } from './utils';
+import { createDebugger } from 'app/debugger';
+import * as neo4j from 'app/neo4j';
+import { ogm } from 'gql';
+import { hashPassword } from 'utils/authentication';
+import { appConstants as c } from 'app/constants';
 
-const debug = createDebug('Seeder');
+const debug = createDebugger('Seeder');
 const User = ogm.model('User');
 const Blog = ogm.model('Blog');
 const Post = ogm.model('Post');
@@ -23,13 +24,14 @@ async function main() {
   const { users } = await User.create({
     input: await Promise.all(
       [
-        [defaultEmail, defaultPassword],
-        [faker.internet.email(), faker.internet.password()],
-        [faker.internet.email(), faker.internet.password()],
-      ].map(async ([email, password]) => {
+        [defaultEmail, defaultPassword, c.authentication.defaultAdminRole],
+        [faker.internet.email(), faker.internet.password(), c.authentication.defaultUserRole],
+        [faker.internet.email(), faker.internet.password(), c.authentication.defaultUserRole],
+      ].map(async ([email, password, roles]) => {
         return {
           email,
-          password: await hashPassword(password),
+          password: await hashPassword(password as string),
+          roles,
         };
       })
     ),

@@ -1,12 +1,12 @@
 import express from 'express';
 import * as path from 'path';
-import * as config from './config';
-import createDebug from './debugger';
-import * as graphql from './gql';
+import * as config from 'app/config';
+import { createDebugger } from 'app/debugger';
+import * as graphql from 'gql';
 
 export const app = express();
 
-const debug = createDebug('HTTP');
+const debug = createDebugger('HTTP');
 
 if (config.NODE_ENV === 'production') {
   debug('Production serving statics');

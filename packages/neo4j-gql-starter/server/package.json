@@ -4,7 +4,7 @@
   "description": "",
   "main": "./dist/src/index.js",
   "scripts": {
-    "start": "nodemon --watch './src/**/*.ts' --exec ./node_modules/.bin/ts-node -r tsconfig-paths/register --project ./src/tsconfig.json ./src/index.ts",
+    "start": "nodemon --watch './src/**/*.ts' -e 'json,ts' --exec ./node_modules/.bin/ts-node -r tsconfig-paths/register --project ./src/tsconfig.json ./src/index.ts",
     "build": "tsc  --project src/",
     "seed": "ts-node -r tsconfig-paths/register --project ./src/tsconfig.json ./src/seeder.ts",
     "test": "jest"
@@ -21,7 +21,8 @@
     "express": "4.17.1",
     "graphql": "^15.5.1",
     "jsonwebtoken": "8.5.1",
-    "neo4j-driver": "^4.3.2"
+    "neo4j-driver": "^4.3.2",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",

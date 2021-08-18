@@ -1,16 +1,23 @@
 import { gql } from 'apollo-server-express';
-import { Context } from '../types';
-import { comparePassword, createJWT, hashPassword } from '../utils';
+import { validateSignUp } from 'schema/sign-up.schema';
+import { OgmModel } from 'types/enums';
+import { Context } from 'types/types';
+import { comparePassword, createJWT, hashPassword } from '../utils/authentication';
+import { appConstants as c } from 'app/constants';
 
 async function signUp(_root, args: { email: string; password: string }, context: Context) {
-  const User = context.ogm.model("User");
+  const User = context.ogm.model(OgmModel.User);
+  await validateSignUp({ email: args.email, password: args.password })
+    .catch((err) => {
+      throw new Error(`${err.name}: ${err.errors.join(',')}`);
+    });
 
   const [existing] = await User.find({
     where: { email: args.email },
     context: { ...context, adminOverride: true },
   });
   if (existing) {
-    throw new Error("user with that email already exists");
+    throw new Error('user with that email already exists');
   }
 
   const hash = await hashPassword(args.password);
@@ -21,41 +28,47 @@ async function signUp(_root, args: { email: string; password: string }, context:
         {
           email: args.email,
           password: hash,
+          roles: c.authentication.defaultUserRole,
         },
       ],
     })
   ).users;
 
-  const jwt = await createJWT({ sub: user.id });
-
-  return jwt;
+  return createJWT({ sub: user.id, roles: user.roles });
 }
 
 async function signIn(_root, args: { email: string; password: string }, context: Context) {
-  const User = context.ogm.model("User");
+  const User = context.ogm.model(OgmModel.User);
 
   const [existing] = await User.find({
     where: { email: args.email },
     context: { ...context, adminOverride: true },
   });
+
   if (!existing) {
-    throw new Error("user not found");
+    throw new Error('user not found');
   }
 
   const equal = await comparePassword(args.password, existing.password);
   if (!equal) {
-    throw new Error("Unauthorized");
+    throw new Error('Unauthorized');
   }
 
-  const jwt = await createJWT({ sub: existing.id });
+  const jwt = await createJWT({ sub: existing.id, roles: existing.roles });
 
   return jwt;
 }
 
 export const typeDefs = gql`
+  enum UserRole {
+    ROLE_USER,
+    ROLE_ADMIN
+  }
+
   type User {
     id: ID! @id
     email: String!
+    roles: [UserRole!]!
     createdBlogs: [Blog] @relationship(type: "HAS_BLOG", direction: OUT)
     authorsBlogs: [Blog] @relationship(type: "CAN_POST", direction: OUT)
     password: String! @private
@@ -66,6 +79,7 @@ export const typeDefs = gql`
   extend type User
     @auth(
       rules: [
+        { operations: [CREATE], roles: ["ROLE_ADMIN"] }
         { operations: [CONNECT], isAuthenticated: true }
         { operations: [UPDATE], allow: { id: "$jwt.sub" }, bind: { id: "$jwt.sub" } }
         { operations: [DELETE], allow: { id: "$jwt.sub" } }
