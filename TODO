@@ -1,6 +1,20 @@
 Server Starter:
-  ☐ add debugger
-  ☐ add watch to script
+  ✔ add debugger @done(21-08-18 22:38)
+  ✔ add watch to script @done(21-08-18 22:31)
+  ✔ add roles to signIn, createdUsers @done(21-08-19 00:49)
+  ✔ add roles to authentication @done(21-08-19 00:49)
+  ✔ add validation to resolvers, ex create User @done(21-08-19 00:49)
+  ☐ add authentication to operations
+  ☐ add operations to client.http
+  ☐ server docker image
+  ☐ readme with how to boot project with docker composer and from source code
+  ☐ add refresh token and rest controller
+  ☐ authentication add mnemonic phasephrases on signIn
+  ☐ add tags/taxonomy, linked to blog, every blog can have it's own tags
+    works like posts
+  ☐ remove or comment comments
+  ☐ create like social network like friend, follow things etc
+  ☐ add dockerfile and docker-compose.yml
   ☐ add ssl/tls, get form BuildingGraphQLAPIsUsingTheNeo4jGraphQLLibrary
     seems that is better to use caddy to serve it and refresh certificates
 
