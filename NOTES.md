@@ -315,3 +315,24 @@ with
 	fetch = +refs/heads/*:refs/remotes/origin/*
 
 
+## Cyper
+
+### Indexs
+
+- [Examples - Neo4j Cypher Manual](https://neo4j.com/docs/cypher-manual/current/constraints/examples/)
+
+```cypher
+// MATCH (n) DETACH DELETE n;
+// CREATE CONSTRAINT constraint_blog_id ON (blog:Blog) ASSERT blog.id IS UNIQUE;
+// CREATE CONSTRAINT constraint_blog_title ON (blog:Blog) ASSERT blog.title IS UNIQUE;
+// CREATE CONSTRAINT constraint_user_id ON (user:User) ASSERT user.id IS UNIQUE;
+// CREATE CONSTRAINT constraint_user_email ON (user:User) ASSERT user.email IS UNIQUE;
+// SHOW CONSTRAINTS;
+// DROP CONSTRAINT constraint_name
+```
+
+
+```cypher
+# get blog,tags,creators
+MATCH (b)-[:HAS_TAG]->(t:Tag)<-[:CREATE]-(u) RETURN b,t,u
+```

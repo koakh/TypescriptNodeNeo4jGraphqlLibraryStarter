@@ -4,6 +4,7 @@ Server Starter:
   ✔ add roles to signIn, createdUsers @done(21-08-19 00:49)
   ✔ add roles to authentication @done(21-08-19 00:49)
   ✔ add validation to resolvers, ex create User @done(21-08-19 00:49)
+  ☐ add unique indexs to graphqldb
   ☐ add authentication to operations
   ☐ add operations to client.http
   ☐ server docker image
@@ -18,3 +19,5 @@ Server Starter:
   ☐ add ssl/tls, get form BuildingGraphQLAPIsUsingTheNeo4jGraphQLLibrary
     seems that is better to use caddy to serve it and refresh certificates
 
+Features:
+  ☐ lucene text search engine
