@@ -9,6 +9,8 @@
 @requestType = GraphQL
 @authToken = {{SignInMutation.response.body.$.data.signIn}}
 
+@someBlogId = b1ad979e-a5e2-48d2-a7d3-e33876f0a3b7
+
 ### SignUpMutation
 // @name SignUpMutation
 
@@ -91,13 +93,34 @@ mutation CreateUsersMutation($createUsersInput: [UserCreateInput!]!) {
           "where": {
             "node": {
               // connect to blog id
-              "id": "b1ad979e-a5e2-48d2-a7d3-e33876f0a3b7"
+              "id": "{{someBlogId}}"
             }
           }
         }
       }
     }
   ]
+}
+
+### GetTagsQuery
+// @name GetTagsQuery
+
+POST {{gqlUri}} HTTP/1.1
+Content-Type: {{contentType}}
+X-REQUEST-TYPE: {{requestType}}
+Authorization: Bearer {{authToken}}
+
+query GetTagsQuery {
+  tags {
+    id
+    title
+    isCreator
+    updatedAt
+    blog {
+      id
+      name
+    }
+  }
 }
 
 ### ------------------------------------------------------------------------
