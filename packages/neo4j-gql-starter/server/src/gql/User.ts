@@ -1,9 +1,9 @@
 import { gql } from 'apollo-server-express';
+import { appConstants as c } from 'app/constants';
 import { validateSignUp } from 'schema/sign-up.schema';
 import { OgmModel } from 'types/enums';
 import { Context } from 'types/types';
-import { comparePassword, createJWT, hashPassword } from '../utils/authentication';
-import { appConstants as c } from 'app/constants';
+import { comparePassword, createJWT, hashPassword } from 'utils/authentication';
 
 async function signUp(_root, args: { email: string; password: string }, context: Context) {
   const User = context.ogm.model(OgmModel.User);
@@ -70,6 +70,7 @@ export const typeDefs = gql`
     email: String!
     roles: [UserRole!]!
     createdBlogs: [Blog] @relationship(type: "HAS_BLOG", direction: OUT)
+    createdTags: [Tag] @relationship(type: "HAS_TAG", direction: OUT)
     authorsBlogs: [Blog] @relationship(type: "CAN_POST", direction: OUT)
     password: String! @private
     createdAt: DateTime @timestamp(operations: [CREATE])
@@ -79,7 +80,8 @@ export const typeDefs = gql`
   extend type User
     @auth(
       rules: [
-        { operations: [CREATE], roles: ["ROLE_ADMIN"] }
+        # used in seeder
+        { operations: [CREATE,UPDATE,DELETE,CONNECT,DISCONNECT], roles: ["ROLE_ADMIN"] }
         { operations: [CONNECT], isAuthenticated: true }
         { operations: [UPDATE], allow: { id: "$jwt.sub" }, bind: { id: "$jwt.sub" } }
         { operations: [DELETE], allow: { id: "$jwt.sub" } }
@@ -89,6 +91,7 @@ export const typeDefs = gql`
             OR: [
               { id: "$jwt.sub" }
               { createdBlogs: { OR: [{ creator: { id: "$jwt.sub" } }, { authors: { id: "$jwt.sub" } }] } }
+              { createdTags: { OR: [{ creator: { id: "$jwt.sub" } }, { authors: { id: "$jwt.sub" } }] } }
               { authorsBlogs: { OR: [{ creator: { id: "$jwt.sub" } }, { authors: { id: "$jwt.sub" } }] } }
             ]
           }

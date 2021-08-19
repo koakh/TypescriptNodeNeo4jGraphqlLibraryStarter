@@ -1,34 +1,44 @@
 import { gql } from 'apollo-server-express';
 
 export const typeDefs = gql`
-type Blog {
+type Tag {
   id: ID! @id
-  name: String!
-  creator: User @relationship(type: "HAS_BLOG", direction: IN)
-  authors: [User] @relationship(type: "CAN_POST", direction: IN)
-  posts: [Post] @relationship(type: "HAS_POST", direction: OUT)
-  tags: [Tag] @relationship(type: "HAS_TAG", direction: OUT)
-  isCreator: Boolean
+  title: String!
+  blog: Blog @relationship(type: "HAS_TAG", direction: IN)
+  creator: User @relationship(type: "CREATE", direction: IN)
+  canEdit: Boolean
     @cypher(
       statement: """
-        OPTIONAL MATCH (this)<-[:HAS_BLOG]-(creator:User {id: $auth.jwt.sub})
-        WITH creator IS NOT NULL AS isCreator
-        RETURN isCreator
+      OPTIONAL MATCH (this)<-[:CREATE]-(creator:User {id: $auth.jwt.sub})
+      OPTIONAL MATCH (this)<-[:HAS_TAG]-(blog:Blog)
+      OPTIONAL MATCH (blog)<-[:HAS_BLOG]-(blogCreator:User {id: $auth.jwt.sub})
+      OPTIONAL MATCH (blog)<-[:CAN_POST]-(blogAuthors:User {id: $auth.jwt.sub})
+      WITH (
+        (creator IS NOT NULL) OR
+        (blogCreator IS NOT NULL) OR
+        (blogAuthors IS NOT NULL)
+      ) AS canEdit
+      RETURN canEdit
       """
     )
-  isAuthor: Boolean
+  canDelete: Boolean
     @cypher(
       statement: """
-        OPTIONAL MATCH (this)<-[:CAN_POST]-(author:User {id: $auth.jwt.sub})
-        WITH author IS NOT NULL AS isAuthor
-        RETURN isAuthor
+      OPTIONAL MATCH (this)<-[:CREATE]-(creator:User {id: $auth.jwt.sub})
+      OPTIONAL MATCH (this)<-[:HAS_TAG]-(blog:Blog)
+      OPTIONAL MATCH (blog)<-[:HAS_BLOG]-(blogCreator:User {id: $auth.jwt.sub})
+      WITH (
+          (creator IS NOT NULL) OR
+          (blogCreator IS NOT NULL)
+      ) AS canDelete
+      RETURN canDelete
       """
     )
   createdAt: DateTime @timestamp(operations: [CREATE])
   updatedAt: DateTime @timestamp(operations: [UPDATE])
 }
 
-extend type Blog
+extend type Tag
   @auth(
     rules: [
       # used in seeder

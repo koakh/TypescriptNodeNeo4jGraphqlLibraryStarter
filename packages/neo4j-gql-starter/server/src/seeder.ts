@@ -69,6 +69,20 @@ async function main() {
             }
           })),
         },
+        tags: {
+          create: new Array(6).fill(null).map(() => {
+            const u = users[Math.floor(Math.random() * users.length)];
+
+            return {
+              node: {
+                title: faker.name.jobType(),
+                creator: {
+                  connect: { where: { node: { id: u.id } } },
+                },
+              }
+            };
+          })
+        }
       };
     }),
   });

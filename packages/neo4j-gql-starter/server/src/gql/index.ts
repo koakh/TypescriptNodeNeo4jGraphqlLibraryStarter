@@ -8,10 +8,12 @@ import * as Blog from './Blog';
 import * as Comment from './Comment';
 import * as Post from './Post';
 import * as User from './User';
+import * as Tag from './Tag';
 
-export const typeDefs = [User.typeDefs, Blog.typeDefs, Post.typeDefs, Comment.typeDefs];
+export const typeDefs = [User.typeDefs, Blog.typeDefs, Post.typeDefs, Comment.typeDefs, Tag.typeDefs];
 
 export const resolvers = {
+  // custom resolvers
   ...User.resolvers,
 };
 
