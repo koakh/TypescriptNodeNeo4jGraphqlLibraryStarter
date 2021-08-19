@@ -74,7 +74,9 @@ mutation CreateUsersMutation($createUsersInput: [UserCreateInput!]!) {
   "createUsersInput": [
     {
       "email": "kapa@example.com",
-      "roles": ["ROLE_USER"],
+      "roles": [
+        "ROLE_USER"
+      ],
       "createdBlogs": {
         "create": [
           {
@@ -83,6 +85,16 @@ mutation CreateUsersMutation($createUsersInput: [UserCreateInput!]!) {
             }
           }
         ]
+      },
+      "authorsBlogs": {
+        "connect": {
+          "where": {
+            "node": {
+              // connect to blog id
+              "id": "b1ad979e-a5e2-48d2-a7d3-e33876f0a3b7"
+            }
+          }
+        }
       }
     }
   ]

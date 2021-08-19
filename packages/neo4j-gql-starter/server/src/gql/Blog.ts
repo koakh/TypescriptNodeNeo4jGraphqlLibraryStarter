@@ -30,7 +30,7 @@ type Blog {
 extend type Blog
   @auth(
     rules: [
-      { operations: [CREATE], roles: ["ROLE_ADMIN"] }
+      { operations: [CREATE,CONNECT], roles: ["ROLE_ADMIN"] }
       { operations: [CREATE], bind: { creator: { id: "$jwt.sub" } } }
       {
         operations: [UPDATE]
