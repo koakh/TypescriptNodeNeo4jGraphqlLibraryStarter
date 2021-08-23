@@ -21,10 +21,11 @@ services:
     restart: unless-stopped
     ports:
       - "8080:8080"
-    environment:
+    volumes:
       - /etc/localtime:/etc/localtime:ro
+    environment:
       - NEO_USER=neo4j
-      - NEO_PASSWORD=FyQqVLdYF4sDpy4W
+      - NEO_PASSWORD=neo4j
       - NEO_URL=neo4j://neo4j:7687/neo4j
       - NEO4J_GRAPHQL_JWT_SECRET=supersecret
 
