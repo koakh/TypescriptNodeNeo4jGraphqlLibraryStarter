@@ -1,0 +1,8 @@
+Dockerfile
+.dockerignore
+.env.example
+client.http
+dockerpush.sh
+jest.config.js
+node_modules
+npm-debug.log

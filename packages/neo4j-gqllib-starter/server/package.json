@@ -1,0 +1,51 @@
+{
+  "name": "neo4j-gqllib-starter-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/src/index.js",
+  "scripts": {
+    "start": "DEBUG=@neo4j/graphql:execute nodemon --watch './src/**/*.ts' -e 'json,ts' --exec ./node_modules/.bin/ts-node -r tsconfig-paths/register --project ./src/tsconfig.json ./src/index.ts",
+    "build": "tsc  --project src/",
+    "seed": "ts-node -r tsconfig-paths/register --project ./src/tsconfig.json ./src/seeder.ts",
+    "test": "jest",
+    "docker:build": "docker build . -t koakh/neo4j-gqllib-starter-server:latest",
+    "docker:run": "docker run -p 8080:8080 -d koakh/neo4j-gqllib-starter-server:latest",
+    "docker:run:debug": "docker run -it koakh/neo4j-gqllib-starter-server:latest /bin/sh"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@neo4j/graphql": "^2.0.0",
+    "@neo4j/graphql-ogm": "^2.0.0",
+    "apollo-server-express": "^3.1.2",
+    "bcrypt": "5.0.1",
+    "debug": "^4.3.2",
+    "dotenv": "^10.0.0",
+    "express": "4.17.1",
+    "graphql": "^15.5.1",
+    "jsonwebtoken": "8.5.1",
+    "neo4j-driver": "^4.3.2",
+    "yup": "^0.32.9"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/debug": "^4.1.7",
+    "@types/dotenv": "8.2.0",
+    "@types/express": "^4.17.13",
+    "@types/faker": "^5.5.8",
+    "@types/jest": "^27.0.1",
+    "@types/jsonwebtoken": "^8.5.4",
+    "@types/node": "^16.6.1",
+    "@types/uuid": "^8.3.1",
+    "apollo-server-testing": "^2.25.2",
+    "cross-env": "7.0.3",
+    "faker": "^5.5.3",
+    "jest": "^27.0.6",
+    "nodemon": "^2.0.12",
+    "randomstring": "^1.2.1",
+    "ts-jest": "^27.0.4",
+    "ts-node": "^10.2.0",
+    "tsconfig-paths": "^3.10.1",
+    "typescript": "^4.3.5"
+  }
+}
