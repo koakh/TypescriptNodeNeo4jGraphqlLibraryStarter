@@ -25,7 +25,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
     environment:
       - NEO_USER=neo4j
-      - NEO_PASSWORD=neo4j
+      - NEO_PASSWORD=root
       - NEO_URL=neo4j://neo4j:7687/neo4j
       - NEO4J_GRAPHQL_JWT_SECRET=supersecret
 
@@ -47,5 +47,6 @@ services:
       - ./volumes/neo4j/import:/var/lib/neo4j/import
     environment:
       - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+      - NEO4J_AUTH=neo4j/root
       - NEO4J_dbms_memory_heap_maxSize=2048
       - NEO4J_dbms_connector_bolt_enabled=true
