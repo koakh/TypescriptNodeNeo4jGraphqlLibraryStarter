@@ -3,12 +3,17 @@ Server Starter:
   ✔ add watch to script @done(21-08-18 22:31)
   ✔ add roles to signIn, createdUsers @done(21-08-19 00:49)
   ✔ add roles to authentication @done(21-08-19 00:49)
-  ✔ add validation to resolvers, ex create User @done(21-08-19 00:49)
-  ☐ add unique indexs to graphqldb
-  ☐ add authentication to operations
-  ☐ add operations to client.http
+  ✔ show neo4j debugger, and post <many> tags, fix CreatePostsMutation @done(21-08-20 22:01)
   ☐ server docker image
+  ☐ docker-compose with server connected to neo4j
+  ☐ seed database script
   ☐ readme with how to boot project with docker composer and from source code
+  ☐ add readme to neo4j-gqllib-starter with init project and run docker image
+  ☐ add validation schema to all objectType resolvers
+  ☐ add unique indexs to all objectType graphqldb
+
+  ☐ add/check authentication to graphQL operations
+  ☐ add all operations to client.http
   ☐ add refresh token and rest controller
   ☐ authentication add mnemonic phasephrases on signIn
   ☐ add tags/taxonomy, linked to blog, every blog can have it's own tags
@@ -19,5 +24,15 @@ Server Starter:
   ☐ add ssl/tls, get form BuildingGraphQLAPIsUsingTheNeo4jGraphQLLibrary
     seems that is better to use caddy to serve it and refresh certificates
 
-Features:
-  ☐ lucene text search engine
+Neo4J:
+  ☐ how create unique constrains on field and in same blog for ex for tag name
+
+Basic Operations:
+  ✔ signUp/signIn @done(21-08-20 00:11)
+  ✔ crud blog,comments,posts,tags,users @done(21-08-20 00:11)
+  ✔ search post text title and content
+  ☐ recommended post based on same tags (tags array include)
+  ☐ follow blog
+  ☐ follow post
+  ☐ follow tag
+  ☐ follow user

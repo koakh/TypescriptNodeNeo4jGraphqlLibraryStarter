@@ -10,19 +10,19 @@ $ git clone https://github.com/neo4j/graphql.git
 
 first remove packages `graphql`, `ogm` and `package-tests`
 
-and move `examples/migration` and `examples/neo-push` projects to `packages` 
+and move `examples/migration` and `examples/neo4j-gqllib-starter` projects to `packages` 
 
 ```shell
 $ rm README.md packages/graphql/ packages/ogm/ packages/package-tests/ -R
 $ mv examples/README.md .
 $ mv examples/migration/ packages/
-$ mv examples/neo-push/ packages/
+$ mv examples/neo4j-gqllib-starter/ packages/
 $ rm examples docs -R
 ```
 
 ![image](./attachments/2021-08-15-22-23-52.png)
 
-`packages/neo-push/server/.env.example`
+`packages/neo4j-gqllib-starter/server/.env.example`
 
 ```shell
 # NEO_USER=admin
@@ -40,8 +40,8 @@ edit `package.json` and change `workspaces` to
 
 ```json
   "workspaces": [
-    "packages/neo-push/server",
-    "packages/neo-push/client"
+    "packages/neo4j-gqllib-starter/server",
+    "packages/neo4j-gqllib-starter/client"
   ],
 ```
 
@@ -58,15 +58,15 @@ edit `tsconfig.json` and remove bellow lines and replace `examples` with `packag
 {
   "files": [],
   "references": [
-    { "path": "./packages/neo-push/client/src/tsconfig.json" },
-    { "path": "./packages/neo-push/server/src/tsconfig.json" }
+    { "path": "./packages/neo4j-gqllib-starter/client/src/tsconfig.json" },
+    { "path": "./packages/neo4j-gqllib-starter/server/src/tsconfig.json" }
   ]
 }
 ```
 
 ### tsconfig.json server
 
-`packages/neo-push/server/src/tsconfig.json`
+`packages/neo4j-gqllib-starter/server/src/tsconfig.json`
 
 change
 
@@ -102,7 +102,7 @@ with
 }
 ```
 
-`packages/neo-push/server/tests/tsconfig.json`
+`packages/neo4j-gqllib-starter/server/tests/tsconfig.json`
 
 change
 
@@ -137,17 +137,17 @@ with
 
 ### Eslit
 
-edit `.eslintrc.js` and change `examples/neo-push` to `packages/neo-push`
+edit `.eslintrc.js` and change `examples/neo4j-gqllib-starter` to `packages/neo4j-gqllib-starter`
 
 ## Bootstrap NeoPush TLDR
 
-read [README.md](packages/neo-push/README.md)
+read [README.md](packages/neo4j-gqllib-starter/README.md)
 
 ```shell
-$ cp packages/neo-push/server/.env.example packages/neo-push/server/.env
-$ cp packages/neo-push/client/.env.example packages/neo-push/client/.env
-$ code packages/neo-push/server/.env
-$ code packages/neo-push/client/.env
+$ cp packages/neo4j-gqllib-starter/server/.env.example packages/neo4j-gqllib-starter/server/.env
+$ cp packages/neo4j-gqllib-starter/client/.env.example packages/neo4j-gqllib-starter/client/.env
+$ code packages/neo4j-gqllib-starter/server/.env
+$ code packages/neo4j-gqllib-starter/client/.env
 ```
 
 1. update all packages to latest releases, with `npm npm-check -u`
@@ -163,7 +163,7 @@ $ yarn
 Error: You must `await server.start()` before calling `server.applyMiddleware()`
 ```
 
-`packages/neo-push/server/src/server.ts`
+`packages/neo4j-gqllib-starter/server/src/server.ts`
 
 ```typescript
 export const app = express();
@@ -219,7 +219,7 @@ posts: {
 ```
 
 ```shell
-$ yarn run neo-push:seed
+$ yarn run neo4j-gqllib-starter:seed
   Server:Seeder Seeding Started +0ms
   Server:Neo4j Connecting +0ms
   Server:Neo4j Connected +52ms
@@ -242,7 +242,7 @@ MATCH (n) RETURN n
 Run the `webpack` and `graphql` servers with;
 
 ```shell
-$ yarn run neo-push
+$ yarn run neo4j-gqllib-starter
 ```
 
 - [Frontend](http://localhost:4000)
@@ -270,10 +270,10 @@ $ yarn run neo-push
   },
 ```
 
-1. change all `neo-push` string with `neo4j-gql-starter`
-2. `mv packages/neo-push/ packages/neo4j-gql-starter` mv .yarnrc.yml .yarnrc.yml_
+1. change all `neo4j-gqllib-starter` string with `neo4j-gqllib-starter`
+2. `mv packages/neo4j-gqllib-starter/ packages/neo4j-gqllib-starter` mv .yarnrc.yml .yarnrc.yml_
 3. run `yarn install` to reconfigure workspaces
-4. `npm run neo4j-gql-starter`https://stackoverflow.com/questions/64722201/yarn-command-yarn-import-error-this-package-doesnt-seem-to-be-present-in-you
+4. `npm run neo4j-gqllib-starter`https://stackoverflow.com/questions/64722201/yarn-command-yarn-import-error-this-package-doesnt-seem-to-be-present-in-you
 mv .yarnrc.yml_ .yarnrc.yml....Internal Error: @koakh/typescript-node-neo4j-graphql-library-starter@workspace:.: This package doesn't seem to be present in your lockfile; try to make an install to update your resolutions...fix with yarn set version from sources......fixed in 2.4.2 fix with yarn set version 2.4.2
 
 
@@ -288,7 +288,7 @@ $ yarn set version berry && yarn set version 2.4.2
 $ yarn -v
 2.4.2
 
-# wait....now it will finish the install and update yarn.lock with workspaces, and `npm run neo4j-gql-starter` start working again
+# wait....now it will finish the install and update yarn.lock with workspaces, and `npm run neo4j-gqllib-starter` start working again
 $ yarn install
 ➤ YN0000: └ Completed in 14s 483ms
 ➤ YN0000: Done with warnings in 2m 9s
@@ -322,17 +322,44 @@ with
 - [Examples - Neo4j Cypher Manual](https://neo4j.com/docs/cypher-manual/current/constraints/examples/)
 
 ```cypher
-// MATCH (n) DETACH DELETE n;
-// CREATE CONSTRAINT constraint_blog_id ON (blog:Blog) ASSERT blog.id IS UNIQUE;
-// CREATE CONSTRAINT constraint_blog_title ON (blog:Blog) ASSERT blog.title IS UNIQUE;
-// CREATE CONSTRAINT constraint_user_id ON (user:User) ASSERT user.id IS UNIQUE;
-// CREATE CONSTRAINT constraint_user_email ON (user:User) ASSERT user.email IS UNIQUE;
-// SHOW CONSTRAINTS;
-// DROP CONSTRAINT constraint_name
-```
+MATCH (n) DETACH DELETE n;
 
+# https://neo4j.com/graphacademy/training-graphql-apis/03-graphql-apis-custom-logic/#_custom_query_field
+# create the full-text index
+CALL db.index.fulltext.createNodeIndex("postIndex", ["Post"],["title", "content"])
+# SHOW INDEXES
+# use with
+# CALL db.index.fulltext.queryNodes("postIndex", "garph~")
+# DROP INDEX postIndex
+
+// blog
+CREATE CONSTRAINT constraint_blog_id ON (blog:Blog) ASSERT blog.id IS UNIQUE;
+CREATE CONSTRAINT constraint_blog_name ON (blog:Blog) ASSERT blog.name IS UNIQUE;
+
+// user
+CREATE CONSTRAINT constraint_user_id ON (user:User) ASSERT user.id IS UNIQUE;
+CREATE CONSTRAINT constraint_user_email ON (user:User) ASSERT user.email IS UNIQUE;
+
+SHOW CONSTRAINTS;
+DROP CONSTRAINT constraint_name
+```
 
 ```cypher
+# get blog,posts,comments
+MATCH (b)-[:HAS_POST]->(p:Post)-[:HAS_COMMENT]->(c) RETURN b,p,c
+
+# get blog,posts,comments,users
+MATCH (b {id:"a4ee6bc7-e24f-4ee1-ba9a-42d6dc064c5e"})-[:HAS_POST]->(p:Post)-[:HAS_COMMENT]->(c)<-[:COMMENTED]-(u) RETURN b,p,c,u
+
 # get blog,tags,creators
 MATCH (b)-[:HAS_TAG]->(t:Tag)<-[:CREATE]-(u) RETURN b,t,u
+
+# get blog,post,tags
+MATCH (p:Post)<-[:HAS_POST]-(b:Blog)-[:HAS_TAG]->(t:Tag) RETURN p,b,t
 ```
+
+:params {blogId:"6a547d44-3e86-4a61-a32e-23dea4ebf532", adminUserId:"aede1701-d33c-48b6-ad99-5a2e2e881276"}
+
+OPTIONAL MATCH ({id: blogId})<-[:HAS_BLOG]-(creator:User {id: adminUserId})
+WITH creator IS NOT NULL AS isCreator
+RETURN isCreator

@@ -7,8 +7,8 @@
   },
   "private": true,
   "workspaces": [
-    "packages/neo4j-gql-starter/server",
-    "packages/neo4j-gql-starter/client",
+    "packages/neo4j-gqllib-starter/server",
+    "packages/neo4j-gqllib-starter/client",
     "packages/migration"
   ],
   "scripts": {
@@ -16,10 +16,12 @@
     "lint": "eslint .",
     "test": "jest",
     "test:pr": "run-s lint test",
-    "neo4j-gql-starter": "concurrently \"yarn workspace neo4j-gql-starter-server start\" \"yarn workspace neo4j-gql-starter-client start\"",
-    "neo4j-gql-starter:server": "yarn workspace neo4j-gql-starter-server start",
-    "neo4j-gql-starter:seed": "yarn workspace neo4j-gql-starter-server run seed",
-    "conditional-publish": "yarn workspaces foreach --include \"@neo4j/*\" run conditional-publish"
+    "conditional-publish": "yarn workspaces foreach --include \"@neo4j/*\" run conditional-publish",
+    "neo4j-gqllib-starter": "concurrently \"yarn workspace neo4j-gqllib-starter-server start\" \"yarn workspace neo4j-gqllib-starter-client start\"",
+    "neo4j-gqllib-starter:server": "yarn workspace neo4j-gqllib-starter-server start",
+    "neo4j-gqllib-starter:seed": "yarn workspace neo4j-gqllib-starter-server run seed",
+    "neo4j-gqllib-starter:docker:build": "yarn workspace neo4j-gqllib-starter-server run docker:build",
+    "neo4j-gqllib-starter:docker:run": "yarn workspace neo4j-gqllib-starter-server run docker:run"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "4.29.2",

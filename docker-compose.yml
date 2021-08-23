@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  caddy:
+    image: caddy:2.4.3
+    restart: unless-stopped
+    ports:
+      - "443:443"
+    environment:
+      - /etc/localtime:/etc/localtime:ro
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./volumes/caddy/data:/data
+      - ./volumes/caddy/config:/config
+
+  api:
+    image: koakh/neo4j-gqllib-starter-server:latest
+    hostname: server
+    domainname: kuartzo.com
+    container_name: server
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - /etc/localtime:/etc/localtime:ro
+      - NEO_USER=neo4j
+      - NEO_PASSWORD=password
+      - NEO_URL=neo4j://neo4j:7687/neo4j
+      - NEO4J_GRAPHQL_JWT_SECRET=supersecret
+
+  neo4j:
+    image: neo4j:4.0.6-enterprise
+    hostname: neo4j
+    domainname: kuartzo.com
+    container_name: neo4j
+    restart: unless-stopped
+    ports:
+      - "7474:7474"
+      - "7473:7473"
+      - "7687:7687"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./volumes/neo4j/data:/var/lib/neo4j/data
+      - ./volumes/neo4j/logs:/var/lib/neo4j/logs
+      - ./volumes/neo4j/plugins:/var/lib/neo4j/plugins
+      - ./volumes/neo4j/import:/var/lib/neo4j/import
+    environment:
+      - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+      - NEO4J_dbms_memory_heap_maxSize=2048
+      - NEO4J_dbms_connector_bolt_enabled=true

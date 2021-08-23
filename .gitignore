@@ -91,3 +91,4 @@ packages/package-tests/**/package-lock.json
 .pnp.*
 
 tsconfig.tsbuildinfo.bak
+volumes/neo4j/data
