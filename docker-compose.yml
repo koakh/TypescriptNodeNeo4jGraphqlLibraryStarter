@@ -13,10 +13,10 @@ services:
       - ./volumes/caddy/data:/data
       - ./volumes/caddy/config:/config
 
-  api:
+  api-server:
     image: koakh/neo4j-gqllib-starter-server:latest
-    hostname: server
     domainname: kuartzo.com
+    hostname: api-server
     container_name: server
     restart: unless-stopped
     ports:
@@ -24,14 +24,14 @@ services:
     environment:
       - /etc/localtime:/etc/localtime:ro
       - NEO_USER=neo4j
-      - NEO_PASSWORD=password
+      - NEO_PASSWORD=FyQqVLdYF4sDpy4W
       - NEO_URL=neo4j://neo4j:7687/neo4j
       - NEO4J_GRAPHQL_JWT_SECRET=supersecret
 
   neo4j:
     image: neo4j:4.0.6-enterprise
-    hostname: neo4j
     domainname: kuartzo.com
+    hostname: neo4j
     container_name: neo4j
     restart: unless-stopped
     ports:

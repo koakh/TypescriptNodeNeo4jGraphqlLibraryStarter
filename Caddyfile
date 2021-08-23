@@ -1,7 +1,7 @@
-api.koakh.com {
+api.kuartzo.com {
   reverse_proxy 127.0.0.1:8080
 }
 
-neo4j.koakh.com {
+neo4j.kuartzo.com {
   reverse_proxy 127.0.0.1:7474
 }
