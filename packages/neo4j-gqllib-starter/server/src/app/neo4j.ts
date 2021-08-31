@@ -5,13 +5,13 @@ import { createDebugger } from './debugger';
 
 // https://neo4j.com/docs/api/javascript-driver/current/function/index.html
 
-console.log(config);
+const debug = createDebugger('Neo4j');
+debug(config);
 export const driver = neo4j.driver(
   config.NEO4J_URL,
   neo4j.auth.basic(config.NEO4J_USER, config.NEO4J_PASSWORD),
   { encrypted: config.NEO4J_ENCRYPTION as EncryptionLevel }
 );
-const debug = createDebugger('Neo4j');
 
 export async function connect() {
   debug('Connecting');
