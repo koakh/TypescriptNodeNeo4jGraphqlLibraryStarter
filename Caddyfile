@@ -1,7 +1,7 @@
 api.kuartzo.com {
-  reverse_proxy 127.0.0.1:8080
+  reverse_proxy * api-server:8080
 }
 
 neo4j.kuartzo.com {
-  reverse_proxy 127.0.0.1:7474
+  reverse_proxy * neo4j:7474
 }

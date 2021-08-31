@@ -1,5 +1,5 @@
 // delete all nodes and relationships
-MATCH (n) DETACH DELETE n;
+// MATCH (n) DETACH DELETE n;
 // one time only
 CALL db.index.fulltext.createNodeIndex("postIndex", ["Post"],["title", "content"])
 CREATE CONSTRAINT constraint_blog_id ON (blog:Blog) ASSERT blog.id IS UNIQUE;

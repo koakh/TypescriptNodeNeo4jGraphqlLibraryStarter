@@ -3,6 +3,12 @@ FROM node:14-alpine
 # update packages
 RUN apk update
 
+# TODO:
+# ENV DOCKERIZE_VERSION v0.6.1
+# RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+#   && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+#   && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+
 # create root application folder
 WORKDIR /app
 
@@ -23,7 +29,8 @@ USER node
 EXPOSE 8080
 
 CMD [ "node", "./dist/index.js" ]
-
+# TODO:
+# CMD [ "dockerize", "-wait", "tcp://c3edu.online:8430", "-timeout", "300s", "-wait-retry-interval", "30s", "./c3-backend" ]
 
 
 

@@ -25,9 +25,9 @@ $ rm examples docs -R
 `packages/neo4j-gqllib-starter/server/.env.example`
 
 ```shell
-# NEO_USER=admin
-NEO_USER=neo4j
-NEO_PASSWORD=password
+# NEO4J_USER=admin
+NEO4J_USER=neo4j
+NEO4J_PASSWORD=password
 ```
 
 > don't forget to change username to `neo4j`
