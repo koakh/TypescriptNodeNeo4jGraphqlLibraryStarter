@@ -94,3 +94,5 @@ tsconfig.tsbuildinfo.bak
 volumes/neo4j/data
 volumes/neo4j/caddy
 
+volumes/caddy/config/caddy/
+volumes/caddy/data/
