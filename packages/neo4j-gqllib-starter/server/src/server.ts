@@ -37,7 +37,7 @@ export async function start(): Promise<void> {
     app,
     cors: {
       // add '*'
-      origin: config.CORS_ORIGIN,
+      origin: [...config.CORS_ORIGIN.split(',')],
       methods: 'POST',
       credentials: true
       // preflightContinue: true,
