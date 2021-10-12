@@ -90,7 +90,8 @@ packages/package-tests/**/package-lock.json
 !.yarn/versions
 .pnp.*
 
+# custo
+.bak
 tsconfig.tsbuildinfo.bak
 volumes/neo4j/data
 volumes/neo4j/caddy
-

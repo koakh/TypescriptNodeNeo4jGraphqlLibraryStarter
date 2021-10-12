@@ -1,0 +1,1735 @@
+type Blog {
+  authors(options: UserOptions, where: UserWhere): [User]
+  authorsConnection(after: String, first: Int, sort: [BlogAuthorsConnectionSort!], where: BlogAuthorsConnectionWhere): BlogAuthorsConnection!
+  createdAt: DateTime
+  creator(options: UserOptions, where: UserWhere): User
+  creatorConnection(after: String, first: Int, sort: [BlogCreatorConnectionSort!], where: BlogCreatorConnectionWhere): BlogCreatorConnection!
+  description: String!
+  id: ID!
+  isAuthor: Boolean
+  isCreator: Boolean
+  name: String!
+  posts(options: PostOptions, where: PostWhere): [Post]
+  postsConnection(after: String, first: Int, sort: [BlogPostsConnectionSort!], where: BlogPostsConnectionWhere): BlogPostsConnection!
+  tags(options: TagOptions, where: TagWhere): [Tag]
+  tagsConnection(after: String, first: Int, sort: [BlogTagsConnectionSort!], where: BlogTagsConnectionWhere): BlogTagsConnection!
+  updatedAt: DateTime
+}
+
+input BlogAuthorsConnectFieldInput {
+  where: UserConnectWhere
+  connect: [UserConnectInput!]
+}
+
+type BlogAuthorsConnection {
+  edges: [BlogAuthorsRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input BlogAuthorsConnectionSort {
+  node: UserSort
+}
+
+input BlogAuthorsConnectionWhere {
+  AND: [BlogAuthorsConnectionWhere!]
+  OR: [BlogAuthorsConnectionWhere!]
+  node: UserWhere
+  node_NOT: UserWhere
+}
+
+input BlogAuthorsCreateFieldInput {
+  node: UserCreateInput!
+}
+
+input BlogAuthorsDeleteFieldInput {
+  where: BlogAuthorsConnectionWhere
+  delete: UserDeleteInput
+}
+
+input BlogAuthorsDisconnectFieldInput {
+  where: BlogAuthorsConnectionWhere
+  disconnect: UserDisconnectInput
+}
+
+input BlogAuthorsFieldInput {
+  create: [BlogAuthorsCreateFieldInput!]
+  connect: [BlogAuthorsConnectFieldInput!]
+}
+
+type BlogAuthorsRelationship {
+  cursor: String!
+  node: User!
+}
+
+input BlogAuthorsUpdateConnectionInput {
+  node: UserUpdateInput
+}
+
+input BlogAuthorsUpdateFieldInput {
+  where: BlogAuthorsConnectionWhere
+  update: BlogAuthorsUpdateConnectionInput
+  connect: [BlogAuthorsConnectFieldInput!]
+  disconnect: [BlogAuthorsDisconnectFieldInput!]
+  create: [BlogAuthorsCreateFieldInput!]
+  delete: [BlogAuthorsDeleteFieldInput!]
+}
+
+input BlogConnectInput {
+  creator: BlogCreatorConnectFieldInput
+  authors: [BlogAuthorsConnectFieldInput!]
+  posts: [BlogPostsConnectFieldInput!]
+  tags: [BlogTagsConnectFieldInput!]
+}
+
+input BlogConnectWhere {
+  node: BlogWhere!
+}
+
+input BlogCreateInput {
+  name: String!
+  description: String!
+  creator: BlogCreatorFieldInput
+  authors: BlogAuthorsFieldInput
+  posts: BlogPostsFieldInput
+  tags: BlogTagsFieldInput
+}
+
+input BlogCreatorConnectFieldInput {
+  where: UserConnectWhere
+  connect: UserConnectInput
+}
+
+type BlogCreatorConnection {
+  edges: [BlogCreatorRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input BlogCreatorConnectionSort {
+  node: UserSort
+}
+
+input BlogCreatorConnectionWhere {
+  AND: [BlogCreatorConnectionWhere!]
+  OR: [BlogCreatorConnectionWhere!]
+  node: UserWhere
+  node_NOT: UserWhere
+}
+
+input BlogCreatorCreateFieldInput {
+  node: UserCreateInput!
+}
+
+input BlogCreatorDeleteFieldInput {
+  where: BlogCreatorConnectionWhere
+  delete: UserDeleteInput
+}
+
+input BlogCreatorDisconnectFieldInput {
+  where: BlogCreatorConnectionWhere
+  disconnect: UserDisconnectInput
+}
+
+input BlogCreatorFieldInput {
+  create: BlogCreatorCreateFieldInput
+  connect: BlogCreatorConnectFieldInput
+}
+
+type BlogCreatorRelationship {
+  cursor: String!
+  node: User!
+}
+
+input BlogCreatorUpdateConnectionInput {
+  node: UserUpdateInput
+}
+
+input BlogCreatorUpdateFieldInput {
+  where: BlogCreatorConnectionWhere
+  update: BlogCreatorUpdateConnectionInput
+  connect: BlogCreatorConnectFieldInput
+  disconnect: BlogCreatorDisconnectFieldInput
+  create: BlogCreatorCreateFieldInput
+  delete: BlogCreatorDeleteFieldInput
+}
+
+input BlogDeleteInput {
+  creator: BlogCreatorDeleteFieldInput
+  authors: [BlogAuthorsDeleteFieldInput!]
+  posts: [BlogPostsDeleteFieldInput!]
+  tags: [BlogTagsDeleteFieldInput!]
+}
+
+input BlogDisconnectInput {
+  creator: BlogCreatorDisconnectFieldInput
+  authors: [BlogAuthorsDisconnectFieldInput!]
+  posts: [BlogPostsDisconnectFieldInput!]
+  tags: [BlogTagsDisconnectFieldInput!]
+}
+
+input BlogOptions {
+  """
+  Specify one or more BlogSort objects to sort Blogs by. The sorts will be applied in the order in which they are arranged in the array.
+  """
+  sort: [BlogSort]
+  limit: Int
+  offset: Int
+}
+
+input BlogPostsConnectFieldInput {
+  where: PostConnectWhere
+  connect: [PostConnectInput!]
+}
+
+type BlogPostsConnection {
+  edges: [BlogPostsRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input BlogPostsConnectionSort {
+  node: PostSort
+}
+
+input BlogPostsConnectionWhere {
+  AND: [BlogPostsConnectionWhere!]
+  OR: [BlogPostsConnectionWhere!]
+  node: PostWhere
+  node_NOT: PostWhere
+}
+
+input BlogPostsCreateFieldInput {
+  node: PostCreateInput!
+}
+
+input BlogPostsDeleteFieldInput {
+  where: BlogPostsConnectionWhere
+  delete: PostDeleteInput
+}
+
+input BlogPostsDisconnectFieldInput {
+  where: BlogPostsConnectionWhere
+  disconnect: PostDisconnectInput
+}
+
+input BlogPostsFieldInput {
+  create: [BlogPostsCreateFieldInput!]
+  connect: [BlogPostsConnectFieldInput!]
+}
+
+type BlogPostsRelationship {
+  cursor: String!
+  node: Post!
+}
+
+input BlogPostsUpdateConnectionInput {
+  node: PostUpdateInput
+}
+
+input BlogPostsUpdateFieldInput {
+  where: BlogPostsConnectionWhere
+  update: BlogPostsUpdateConnectionInput
+  connect: [BlogPostsConnectFieldInput!]
+  disconnect: [BlogPostsDisconnectFieldInput!]
+  create: [BlogPostsCreateFieldInput!]
+  delete: [BlogPostsDeleteFieldInput!]
+}
+
+input BlogRelationInput {
+  creator: BlogCreatorCreateFieldInput
+  authors: [BlogAuthorsCreateFieldInput!]
+  posts: [BlogPostsCreateFieldInput!]
+  tags: [BlogTagsCreateFieldInput!]
+}
+
+"""
+Fields to sort Blogs by. The order in which sorts are applied is not guaranteed when specifying many fields in one BlogSort object.
+"""
+input BlogSort {
+  id: SortDirection
+  name: SortDirection
+  description: SortDirection
+  createdAt: SortDirection
+  updatedAt: SortDirection
+}
+
+input BlogTagsConnectFieldInput {
+  where: TagConnectWhere
+  connect: [TagConnectInput!]
+}
+
+type BlogTagsConnection {
+  edges: [BlogTagsRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input BlogTagsConnectionSort {
+  node: TagSort
+}
+
+input BlogTagsConnectionWhere {
+  AND: [BlogTagsConnectionWhere!]
+  OR: [BlogTagsConnectionWhere!]
+  node: TagWhere
+  node_NOT: TagWhere
+}
+
+input BlogTagsCreateFieldInput {
+  node: TagCreateInput!
+}
+
+input BlogTagsDeleteFieldInput {
+  where: BlogTagsConnectionWhere
+  delete: TagDeleteInput
+}
+
+input BlogTagsDisconnectFieldInput {
+  where: BlogTagsConnectionWhere
+  disconnect: TagDisconnectInput
+}
+
+input BlogTagsFieldInput {
+  create: [BlogTagsCreateFieldInput!]
+  connect: [BlogTagsConnectFieldInput!]
+}
+
+type BlogTagsRelationship {
+  cursor: String!
+  node: Tag!
+}
+
+input BlogTagsUpdateConnectionInput {
+  node: TagUpdateInput
+}
+
+input BlogTagsUpdateFieldInput {
+  where: BlogTagsConnectionWhere
+  update: BlogTagsUpdateConnectionInput
+  connect: [BlogTagsConnectFieldInput!]
+  disconnect: [BlogTagsDisconnectFieldInput!]
+  create: [BlogTagsCreateFieldInput!]
+  delete: [BlogTagsDeleteFieldInput!]
+}
+
+input BlogUpdateInput {
+  name: String
+  description: String
+  creator: BlogCreatorUpdateFieldInput
+  authors: [BlogAuthorsUpdateFieldInput!]
+  posts: [BlogPostsUpdateFieldInput!]
+  tags: [BlogTagsUpdateFieldInput!]
+}
+
+input BlogWhere {
+  OR: [BlogWhere!]
+  AND: [BlogWhere!]
+  id: ID
+  id_NOT: ID
+  id_IN: [ID]
+  id_NOT_IN: [ID]
+  id_CONTAINS: ID
+  id_NOT_CONTAINS: ID
+  id_STARTS_WITH: ID
+  id_NOT_STARTS_WITH: ID
+  id_ENDS_WITH: ID
+  id_NOT_ENDS_WITH: ID
+  name: String
+  name_NOT: String
+  name_IN: [String]
+  name_NOT_IN: [String]
+  name_CONTAINS: String
+  name_NOT_CONTAINS: String
+  name_STARTS_WITH: String
+  name_NOT_STARTS_WITH: String
+  name_ENDS_WITH: String
+  name_NOT_ENDS_WITH: String
+  description: String
+  description_NOT: String
+  description_IN: [String]
+  description_NOT_IN: [String]
+  description_CONTAINS: String
+  description_NOT_CONTAINS: String
+  description_STARTS_WITH: String
+  description_NOT_STARTS_WITH: String
+  description_ENDS_WITH: String
+  description_NOT_ENDS_WITH: String
+  createdAt: DateTime
+  createdAt_NOT: DateTime
+  createdAt_IN: [DateTime]
+  createdAt_NOT_IN: [DateTime]
+  createdAt_LT: DateTime
+  createdAt_LTE: DateTime
+  createdAt_GT: DateTime
+  createdAt_GTE: DateTime
+  updatedAt: DateTime
+  updatedAt_NOT: DateTime
+  updatedAt_IN: [DateTime]
+  updatedAt_NOT_IN: [DateTime]
+  updatedAt_LT: DateTime
+  updatedAt_LTE: DateTime
+  updatedAt_GT: DateTime
+  updatedAt_GTE: DateTime
+  creator: UserWhere
+  creator_NOT: UserWhere
+  authors: UserWhere
+  authors_NOT: UserWhere
+  posts: PostWhere
+  posts_NOT: PostWhere
+  tags: TagWhere
+  tags_NOT: TagWhere
+  creatorConnection: BlogCreatorConnectionWhere
+  creatorConnection_NOT: BlogCreatorConnectionWhere
+  authorsConnection: BlogAuthorsConnectionWhere
+  authorsConnection_NOT: BlogAuthorsConnectionWhere
+  postsConnection: BlogPostsConnectionWhere
+  postsConnection_NOT: BlogPostsConnectionWhere
+  tagsConnection: BlogTagsConnectionWhere
+  tagsConnection_NOT: BlogTagsConnectionWhere
+}
+
+type Comment {
+  author(options: UserOptions, where: UserWhere): User
+  authorConnection(after: String, first: Int, sort: [CommentAuthorConnectionSort!], where: CommentAuthorConnectionWhere): CommentAuthorConnection!
+  canDelete: Boolean
+  content: String!
+  createdAt: DateTime
+  id: ID!
+  post(options: PostOptions, where: PostWhere): Post
+  postConnection(after: String, first: Int, sort: [CommentPostConnectionSort!], where: CommentPostConnectionWhere): CommentPostConnection!
+  updatedAt: DateTime
+}
+
+input CommentAuthorConnectFieldInput {
+  where: UserConnectWhere
+  connect: UserConnectInput
+}
+
+type CommentAuthorConnection {
+  edges: [CommentAuthorRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input CommentAuthorConnectionSort {
+  node: UserSort
+}
+
+input CommentAuthorConnectionWhere {
+  AND: [CommentAuthorConnectionWhere!]
+  OR: [CommentAuthorConnectionWhere!]
+  node: UserWhere
+  node_NOT: UserWhere
+}
+
+input CommentAuthorCreateFieldInput {
+  node: UserCreateInput!
+}
+
+input CommentAuthorDeleteFieldInput {
+  where: CommentAuthorConnectionWhere
+  delete: UserDeleteInput
+}
+
+input CommentAuthorDisconnectFieldInput {
+  where: CommentAuthorConnectionWhere
+  disconnect: UserDisconnectInput
+}
+
+input CommentAuthorFieldInput {
+  create: CommentAuthorCreateFieldInput
+  connect: CommentAuthorConnectFieldInput
+}
+
+type CommentAuthorRelationship {
+  cursor: String!
+  node: User!
+}
+
+input CommentAuthorUpdateConnectionInput {
+  node: UserUpdateInput
+}
+
+input CommentAuthorUpdateFieldInput {
+  where: CommentAuthorConnectionWhere
+  update: CommentAuthorUpdateConnectionInput
+  connect: CommentAuthorConnectFieldInput
+  disconnect: CommentAuthorDisconnectFieldInput
+  create: CommentAuthorCreateFieldInput
+  delete: CommentAuthorDeleteFieldInput
+}
+
+input CommentConnectInput {
+  author: CommentAuthorConnectFieldInput
+  post: CommentPostConnectFieldInput
+}
+
+input CommentConnectWhere {
+  node: CommentWhere!
+}
+
+input CommentCreateInput {
+  content: String!
+  author: CommentAuthorFieldInput
+  post: CommentPostFieldInput
+}
+
+input CommentDeleteInput {
+  author: CommentAuthorDeleteFieldInput
+  post: CommentPostDeleteFieldInput
+}
+
+input CommentDisconnectInput {
+  author: CommentAuthorDisconnectFieldInput
+  post: CommentPostDisconnectFieldInput
+}
+
+input CommentOptions {
+  """
+  Specify one or more CommentSort objects to sort Comments by. The sorts will be applied in the order in which they are arranged in the array.
+  """
+  sort: [CommentSort]
+  limit: Int
+  offset: Int
+}
+
+input CommentPostConnectFieldInput {
+  where: PostConnectWhere
+  connect: PostConnectInput
+}
+
+type CommentPostConnection {
+  edges: [CommentPostRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input CommentPostConnectionSort {
+  node: PostSort
+}
+
+input CommentPostConnectionWhere {
+  AND: [CommentPostConnectionWhere!]
+  OR: [CommentPostConnectionWhere!]
+  node: PostWhere
+  node_NOT: PostWhere
+}
+
+input CommentPostCreateFieldInput {
+  node: PostCreateInput!
+}
+
+input CommentPostDeleteFieldInput {
+  where: CommentPostConnectionWhere
+  delete: PostDeleteInput
+}
+
+input CommentPostDisconnectFieldInput {
+  where: CommentPostConnectionWhere
+  disconnect: PostDisconnectInput
+}
+
+input CommentPostFieldInput {
+  create: CommentPostCreateFieldInput
+  connect: CommentPostConnectFieldInput
+}
+
+type CommentPostRelationship {
+  cursor: String!
+  node: Post!
+}
+
+input CommentPostUpdateConnectionInput {
+  node: PostUpdateInput
+}
+
+input CommentPostUpdateFieldInput {
+  where: CommentPostConnectionWhere
+  update: CommentPostUpdateConnectionInput
+  connect: CommentPostConnectFieldInput
+  disconnect: CommentPostDisconnectFieldInput
+  create: CommentPostCreateFieldInput
+  delete: CommentPostDeleteFieldInput
+}
+
+input CommentRelationInput {
+  author: CommentAuthorCreateFieldInput
+  post: CommentPostCreateFieldInput
+}
+
+"""
+Fields to sort Comments by. The order in which sorts are applied is not guaranteed when specifying many fields in one CommentSort object.
+"""
+input CommentSort {
+  id: SortDirection
+  content: SortDirection
+  createdAt: SortDirection
+  updatedAt: SortDirection
+}
+
+input CommentUpdateInput {
+  content: String
+  author: CommentAuthorUpdateFieldInput
+  post: CommentPostUpdateFieldInput
+}
+
+input CommentWhere {
+  OR: [CommentWhere!]
+  AND: [CommentWhere!]
+  id: ID
+  id_NOT: ID
+  id_IN: [ID]
+  id_NOT_IN: [ID]
+  id_CONTAINS: ID
+  id_NOT_CONTAINS: ID
+  id_STARTS_WITH: ID
+  id_NOT_STARTS_WITH: ID
+  id_ENDS_WITH: ID
+  id_NOT_ENDS_WITH: ID
+  content: String
+  content_NOT: String
+  content_IN: [String]
+  content_NOT_IN: [String]
+  content_CONTAINS: String
+  content_NOT_CONTAINS: String
+  content_STARTS_WITH: String
+  content_NOT_STARTS_WITH: String
+  content_ENDS_WITH: String
+  content_NOT_ENDS_WITH: String
+  createdAt: DateTime
+  createdAt_NOT: DateTime
+  createdAt_IN: [DateTime]
+  createdAt_NOT_IN: [DateTime]
+  createdAt_LT: DateTime
+  createdAt_LTE: DateTime
+  createdAt_GT: DateTime
+  createdAt_GTE: DateTime
+  updatedAt: DateTime
+  updatedAt_NOT: DateTime
+  updatedAt_IN: [DateTime]
+  updatedAt_NOT_IN: [DateTime]
+  updatedAt_LT: DateTime
+  updatedAt_LTE: DateTime
+  updatedAt_GT: DateTime
+  updatedAt_GTE: DateTime
+  author: UserWhere
+  author_NOT: UserWhere
+  post: PostWhere
+  post_NOT: PostWhere
+  authorConnection: CommentAuthorConnectionWhere
+  authorConnection_NOT: CommentAuthorConnectionWhere
+  postConnection: CommentPostConnectionWhere
+  postConnection_NOT: CommentPostConnectionWhere
+}
+
+type CreateBlogsMutationResponse {
+  blogs: [Blog!]!
+}
+
+type CreateCommentsMutationResponse {
+  comments: [Comment!]!
+}
+
+type CreatePostsMutationResponse {
+  posts: [Post!]!
+}
+
+type CreateTagsMutationResponse {
+  tags: [Tag!]!
+}
+
+type CreateUsersMutationResponse {
+  users: [User!]!
+}
+
+"""A date and time, represented as an ISO-8601 string"""
+scalar DateTime
+
+type DeleteInfo {
+  nodesDeleted: Int!
+  relationshipsDeleted: Int!
+}
+
+type Mutation {
+  createBlogs(input: [BlogCreateInput!]!): CreateBlogsMutationResponse!
+  createComments(input: [CommentCreateInput!]!): CreateCommentsMutationResponse!
+  createPosts(input: [PostCreateInput!]!): CreatePostsMutationResponse!
+  createTags(input: [TagCreateInput!]!): CreateTagsMutationResponse!
+  createUsers(input: [UserCreateInput!]!): CreateUsersMutationResponse!
+  deleteBlogs(delete: BlogDeleteInput, where: BlogWhere): DeleteInfo!
+  deleteComments(delete: CommentDeleteInput, where: CommentWhere): DeleteInfo!
+  deletePosts(delete: PostDeleteInput, where: PostWhere): DeleteInfo!
+  deleteTags(delete: TagDeleteInput, where: TagWhere): DeleteInfo!
+  deleteUsers(delete: UserDeleteInput, where: UserWhere): DeleteInfo!
+  signIn(email: String!, password: String!): String
+  signUp(email: String!, password: String!): String
+  updateBlogs(connect: BlogConnectInput, create: BlogRelationInput, delete: BlogDeleteInput, disconnect: BlogDisconnectInput, update: BlogUpdateInput, where: BlogWhere): UpdateBlogsMutationResponse!
+  updateComments(connect: CommentConnectInput, create: CommentRelationInput, delete: CommentDeleteInput, disconnect: CommentDisconnectInput, update: CommentUpdateInput, where: CommentWhere): UpdateCommentsMutationResponse!
+  updatePosts(connect: PostConnectInput, create: PostRelationInput, delete: PostDeleteInput, disconnect: PostDisconnectInput, update: PostUpdateInput, where: PostWhere): UpdatePostsMutationResponse!
+  updateTags(connect: TagConnectInput, create: TagRelationInput, delete: TagDeleteInput, disconnect: TagDisconnectInput, update: TagUpdateInput, where: TagWhere): UpdateTagsMutationResponse!
+  updateUsers(connect: UserConnectInput, create: UserRelationInput, delete: UserDeleteInput, disconnect: UserDisconnectInput, update: UserUpdateInput, where: UserWhere): UpdateUsersMutationResponse!
+}
+
+"""Pagination information (Relay)"""
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+}
+
+type Post {
+  author(options: UserOptions, where: UserWhere): User
+  authorConnection(after: String, first: Int, sort: [PostAuthorConnectionSort!], where: PostAuthorConnectionWhere): PostAuthorConnection!
+  blog(options: BlogOptions, where: BlogWhere): Blog
+  blogConnection(after: String, first: Int, sort: [PostBlogConnectionSort!], where: PostBlogConnectionWhere): PostBlogConnection!
+  canDelete: Boolean
+  canEdit: Boolean
+  comments(options: CommentOptions, where: CommentWhere): [Comment]
+  commentsConnection(after: String, first: Int, sort: [PostCommentsConnectionSort!], where: PostCommentsConnectionWhere): PostCommentsConnection!
+  content: String!
+  createdAt: DateTime
+  id: ID!
+  tags(options: TagOptions, where: TagWhere): [Tag]
+  tagsConnection(after: String, first: Int, sort: [PostTagsConnectionSort!], where: PostTagsConnectionWhere): PostTagsConnection!
+  title: String!
+  updatedAt: DateTime
+}
+
+input PostAuthorConnectFieldInput {
+  where: UserConnectWhere
+  connect: UserConnectInput
+}
+
+type PostAuthorConnection {
+  edges: [PostAuthorRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input PostAuthorConnectionSort {
+  node: UserSort
+}
+
+input PostAuthorConnectionWhere {
+  AND: [PostAuthorConnectionWhere!]
+  OR: [PostAuthorConnectionWhere!]
+  node: UserWhere
+  node_NOT: UserWhere
+}
+
+input PostAuthorCreateFieldInput {
+  node: UserCreateInput!
+}
+
+input PostAuthorDeleteFieldInput {
+  where: PostAuthorConnectionWhere
+  delete: UserDeleteInput
+}
+
+input PostAuthorDisconnectFieldInput {
+  where: PostAuthorConnectionWhere
+  disconnect: UserDisconnectInput
+}
+
+input PostAuthorFieldInput {
+  create: PostAuthorCreateFieldInput
+  connect: PostAuthorConnectFieldInput
+}
+
+type PostAuthorRelationship {
+  cursor: String!
+  node: User!
+}
+
+input PostAuthorUpdateConnectionInput {
+  node: UserUpdateInput
+}
+
+input PostAuthorUpdateFieldInput {
+  where: PostAuthorConnectionWhere
+  update: PostAuthorUpdateConnectionInput
+  connect: PostAuthorConnectFieldInput
+  disconnect: PostAuthorDisconnectFieldInput
+  create: PostAuthorCreateFieldInput
+  delete: PostAuthorDeleteFieldInput
+}
+
+input PostBlogConnectFieldInput {
+  where: BlogConnectWhere
+  connect: BlogConnectInput
+}
+
+type PostBlogConnection {
+  edges: [PostBlogRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input PostBlogConnectionSort {
+  node: BlogSort
+}
+
+input PostBlogConnectionWhere {
+  AND: [PostBlogConnectionWhere!]
+  OR: [PostBlogConnectionWhere!]
+  node: BlogWhere
+  node_NOT: BlogWhere
+}
+
+input PostBlogCreateFieldInput {
+  node: BlogCreateInput!
+}
+
+input PostBlogDeleteFieldInput {
+  where: PostBlogConnectionWhere
+  delete: BlogDeleteInput
+}
+
+input PostBlogDisconnectFieldInput {
+  where: PostBlogConnectionWhere
+  disconnect: BlogDisconnectInput
+}
+
+input PostBlogFieldInput {
+  create: PostBlogCreateFieldInput
+  connect: PostBlogConnectFieldInput
+}
+
+type PostBlogRelationship {
+  cursor: String!
+  node: Blog!
+}
+
+input PostBlogUpdateConnectionInput {
+  node: BlogUpdateInput
+}
+
+input PostBlogUpdateFieldInput {
+  where: PostBlogConnectionWhere
+  update: PostBlogUpdateConnectionInput
+  connect: PostBlogConnectFieldInput
+  disconnect: PostBlogDisconnectFieldInput
+  create: PostBlogCreateFieldInput
+  delete: PostBlogDeleteFieldInput
+}
+
+input PostCommentsConnectFieldInput {
+  where: CommentConnectWhere
+  connect: [CommentConnectInput!]
+}
+
+type PostCommentsConnection {
+  edges: [PostCommentsRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input PostCommentsConnectionSort {
+  node: CommentSort
+}
+
+input PostCommentsConnectionWhere {
+  AND: [PostCommentsConnectionWhere!]
+  OR: [PostCommentsConnectionWhere!]
+  node: CommentWhere
+  node_NOT: CommentWhere
+}
+
+input PostCommentsCreateFieldInput {
+  node: CommentCreateInput!
+}
+
+input PostCommentsDeleteFieldInput {
+  where: PostCommentsConnectionWhere
+  delete: CommentDeleteInput
+}
+
+input PostCommentsDisconnectFieldInput {
+  where: PostCommentsConnectionWhere
+  disconnect: CommentDisconnectInput
+}
+
+input PostCommentsFieldInput {
+  create: [PostCommentsCreateFieldInput!]
+  connect: [PostCommentsConnectFieldInput!]
+}
+
+type PostCommentsRelationship {
+  cursor: String!
+  node: Comment!
+}
+
+input PostCommentsUpdateConnectionInput {
+  node: CommentUpdateInput
+}
+
+input PostCommentsUpdateFieldInput {
+  where: PostCommentsConnectionWhere
+  update: PostCommentsUpdateConnectionInput
+  connect: [PostCommentsConnectFieldInput!]
+  disconnect: [PostCommentsDisconnectFieldInput!]
+  create: [PostCommentsCreateFieldInput!]
+  delete: [PostCommentsDeleteFieldInput!]
+}
+
+input PostConnectInput {
+  blog: PostBlogConnectFieldInput
+  comments: [PostCommentsConnectFieldInput!]
+  tags: [PostTagsConnectFieldInput!]
+  author: PostAuthorConnectFieldInput
+}
+
+input PostConnectWhere {
+  node: PostWhere!
+}
+
+input PostCreateInput {
+  title: String!
+  content: String!
+  blog: PostBlogFieldInput
+  comments: PostCommentsFieldInput
+  tags: PostTagsFieldInput
+  author: PostAuthorFieldInput
+}
+
+input PostDeleteInput {
+  blog: PostBlogDeleteFieldInput
+  comments: [PostCommentsDeleteFieldInput!]
+  tags: [PostTagsDeleteFieldInput!]
+  author: PostAuthorDeleteFieldInput
+}
+
+input PostDisconnectInput {
+  blog: PostBlogDisconnectFieldInput
+  comments: [PostCommentsDisconnectFieldInput!]
+  tags: [PostTagsDisconnectFieldInput!]
+  author: PostAuthorDisconnectFieldInput
+}
+
+input PostOptions {
+  """
+  Specify one or more PostSort objects to sort Posts by. The sorts will be applied in the order in which they are arranged in the array.
+  """
+  sort: [PostSort]
+  limit: Int
+  offset: Int
+}
+
+input PostRelationInput {
+  blog: PostBlogCreateFieldInput
+  comments: [PostCommentsCreateFieldInput!]
+  tags: [PostTagsCreateFieldInput!]
+  author: PostAuthorCreateFieldInput
+}
+
+"""
+Fields to sort Posts by. The order in which sorts are applied is not guaranteed when specifying many fields in one PostSort object.
+"""
+input PostSort {
+  id: SortDirection
+  title: SortDirection
+  content: SortDirection
+  createdAt: SortDirection
+  updatedAt: SortDirection
+}
+
+input PostTagsConnectFieldInput {
+  where: TagConnectWhere
+  connect: [TagConnectInput!]
+}
+
+type PostTagsConnection {
+  edges: [PostTagsRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input PostTagsConnectionSort {
+  node: TagSort
+}
+
+input PostTagsConnectionWhere {
+  AND: [PostTagsConnectionWhere!]
+  OR: [PostTagsConnectionWhere!]
+  node: TagWhere
+  node_NOT: TagWhere
+}
+
+input PostTagsCreateFieldInput {
+  node: TagCreateInput!
+}
+
+input PostTagsDeleteFieldInput {
+  where: PostTagsConnectionWhere
+  delete: TagDeleteInput
+}
+
+input PostTagsDisconnectFieldInput {
+  where: PostTagsConnectionWhere
+  disconnect: TagDisconnectInput
+}
+
+input PostTagsFieldInput {
+  create: [PostTagsCreateFieldInput!]
+  connect: [PostTagsConnectFieldInput!]
+}
+
+type PostTagsRelationship {
+  cursor: String!
+  node: Tag!
+}
+
+input PostTagsUpdateConnectionInput {
+  node: TagUpdateInput
+}
+
+input PostTagsUpdateFieldInput {
+  where: PostTagsConnectionWhere
+  update: PostTagsUpdateConnectionInput
+  connect: [PostTagsConnectFieldInput!]
+  disconnect: [PostTagsDisconnectFieldInput!]
+  create: [PostTagsCreateFieldInput!]
+  delete: [PostTagsDeleteFieldInput!]
+}
+
+input PostUpdateInput {
+  title: String
+  content: String
+  blog: PostBlogUpdateFieldInput
+  comments: [PostCommentsUpdateFieldInput!]
+  tags: [PostTagsUpdateFieldInput!]
+  author: PostAuthorUpdateFieldInput
+}
+
+input PostWhere {
+  OR: [PostWhere!]
+  AND: [PostWhere!]
+  id: ID
+  id_NOT: ID
+  id_IN: [ID]
+  id_NOT_IN: [ID]
+  id_CONTAINS: ID
+  id_NOT_CONTAINS: ID
+  id_STARTS_WITH: ID
+  id_NOT_STARTS_WITH: ID
+  id_ENDS_WITH: ID
+  id_NOT_ENDS_WITH: ID
+  title: String
+  title_NOT: String
+  title_IN: [String]
+  title_NOT_IN: [String]
+  title_CONTAINS: String
+  title_NOT_CONTAINS: String
+  title_STARTS_WITH: String
+  title_NOT_STARTS_WITH: String
+  title_ENDS_WITH: String
+  title_NOT_ENDS_WITH: String
+  content: String
+  content_NOT: String
+  content_IN: [String]
+  content_NOT_IN: [String]
+  content_CONTAINS: String
+  content_NOT_CONTAINS: String
+  content_STARTS_WITH: String
+  content_NOT_STARTS_WITH: String
+  content_ENDS_WITH: String
+  content_NOT_ENDS_WITH: String
+  createdAt: DateTime
+  createdAt_NOT: DateTime
+  createdAt_IN: [DateTime]
+  createdAt_NOT_IN: [DateTime]
+  createdAt_LT: DateTime
+  createdAt_LTE: DateTime
+  createdAt_GT: DateTime
+  createdAt_GTE: DateTime
+  updatedAt: DateTime
+  updatedAt_NOT: DateTime
+  updatedAt_IN: [DateTime]
+  updatedAt_NOT_IN: [DateTime]
+  updatedAt_LT: DateTime
+  updatedAt_LTE: DateTime
+  updatedAt_GT: DateTime
+  updatedAt_GTE: DateTime
+  blog: BlogWhere
+  blog_NOT: BlogWhere
+  comments: CommentWhere
+  comments_NOT: CommentWhere
+  tags: TagWhere
+  tags_NOT: TagWhere
+  author: UserWhere
+  author_NOT: UserWhere
+  blogConnection: PostBlogConnectionWhere
+  blogConnection_NOT: PostBlogConnectionWhere
+  commentsConnection: PostCommentsConnectionWhere
+  commentsConnection_NOT: PostCommentsConnectionWhere
+  tagsConnection: PostTagsConnectionWhere
+  tagsConnection_NOT: PostTagsConnectionWhere
+  authorConnection: PostAuthorConnectionWhere
+  authorConnection_NOT: PostAuthorConnectionWhere
+}
+
+type Query {
+  blogs(options: BlogOptions, where: BlogWhere): [Blog!]!
+  blogsCount(where: BlogWhere): Int!
+  comments(options: CommentOptions, where: CommentWhere): [Comment!]!
+  commentsCount(where: CommentWhere): Int!
+  postSearch(searchString: String!): [Post]
+  posts(options: PostOptions, where: PostWhere): [Post!]!
+  postsCount(where: PostWhere): Int!
+  tags(options: TagOptions, where: TagWhere): [Tag!]!
+  tagsCount(where: TagWhere): Int!
+  users(options: UserOptions, where: UserWhere): [User!]!
+  usersCount(where: UserWhere): Int!
+}
+
+enum SortDirection {
+  """Sort by field values in ascending order."""
+  ASC
+
+  """Sort by field values in descending order."""
+  DESC
+}
+
+type Tag {
+  blog(options: BlogOptions, where: BlogWhere): Blog
+  blogConnection(after: String, first: Int, sort: [TagBlogConnectionSort!], where: TagBlogConnectionWhere): TagBlogConnection!
+  canDelete: Boolean
+  canEdit: Boolean
+  createdAt: DateTime
+  creator(options: UserOptions, where: UserWhere): User
+  creatorConnection(after: String, first: Int, sort: [TagCreatorConnectionSort!], where: TagCreatorConnectionWhere): TagCreatorConnection!
+  id: ID!
+  name: String!
+  posts(options: PostOptions, where: PostWhere): [Post]
+  postsConnection(after: String, first: Int, sort: [TagPostsConnectionSort!], where: TagPostsConnectionWhere): TagPostsConnection!
+  updatedAt: DateTime
+}
+
+input TagBlogConnectFieldInput {
+  where: BlogConnectWhere
+  connect: BlogConnectInput
+}
+
+type TagBlogConnection {
+  edges: [TagBlogRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input TagBlogConnectionSort {
+  node: BlogSort
+}
+
+input TagBlogConnectionWhere {
+  AND: [TagBlogConnectionWhere!]
+  OR: [TagBlogConnectionWhere!]
+  node: BlogWhere
+  node_NOT: BlogWhere
+}
+
+input TagBlogCreateFieldInput {
+  node: BlogCreateInput!
+}
+
+input TagBlogDeleteFieldInput {
+  where: TagBlogConnectionWhere
+  delete: BlogDeleteInput
+}
+
+input TagBlogDisconnectFieldInput {
+  where: TagBlogConnectionWhere
+  disconnect: BlogDisconnectInput
+}
+
+input TagBlogFieldInput {
+  create: TagBlogCreateFieldInput
+  connect: TagBlogConnectFieldInput
+}
+
+type TagBlogRelationship {
+  cursor: String!
+  node: Blog!
+}
+
+input TagBlogUpdateConnectionInput {
+  node: BlogUpdateInput
+}
+
+input TagBlogUpdateFieldInput {
+  where: TagBlogConnectionWhere
+  update: TagBlogUpdateConnectionInput
+  connect: TagBlogConnectFieldInput
+  disconnect: TagBlogDisconnectFieldInput
+  create: TagBlogCreateFieldInput
+  delete: TagBlogDeleteFieldInput
+}
+
+input TagConnectInput {
+  blog: TagBlogConnectFieldInput
+  posts: [TagPostsConnectFieldInput!]
+  creator: TagCreatorConnectFieldInput
+}
+
+input TagConnectWhere {
+  node: TagWhere!
+}
+
+input TagCreateInput {
+  name: String!
+  blog: TagBlogFieldInput
+  posts: TagPostsFieldInput
+  creator: TagCreatorFieldInput
+}
+
+input TagCreatorConnectFieldInput {
+  where: UserConnectWhere
+  connect: UserConnectInput
+}
+
+type TagCreatorConnection {
+  edges: [TagCreatorRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input TagCreatorConnectionSort {
+  node: UserSort
+}
+
+input TagCreatorConnectionWhere {
+  AND: [TagCreatorConnectionWhere!]
+  OR: [TagCreatorConnectionWhere!]
+  node: UserWhere
+  node_NOT: UserWhere
+}
+
+input TagCreatorCreateFieldInput {
+  node: UserCreateInput!
+}
+
+input TagCreatorDeleteFieldInput {
+  where: TagCreatorConnectionWhere
+  delete: UserDeleteInput
+}
+
+input TagCreatorDisconnectFieldInput {
+  where: TagCreatorConnectionWhere
+  disconnect: UserDisconnectInput
+}
+
+input TagCreatorFieldInput {
+  create: TagCreatorCreateFieldInput
+  connect: TagCreatorConnectFieldInput
+}
+
+type TagCreatorRelationship {
+  cursor: String!
+  node: User!
+}
+
+input TagCreatorUpdateConnectionInput {
+  node: UserUpdateInput
+}
+
+input TagCreatorUpdateFieldInput {
+  where: TagCreatorConnectionWhere
+  update: TagCreatorUpdateConnectionInput
+  connect: TagCreatorConnectFieldInput
+  disconnect: TagCreatorDisconnectFieldInput
+  create: TagCreatorCreateFieldInput
+  delete: TagCreatorDeleteFieldInput
+}
+
+input TagDeleteInput {
+  blog: TagBlogDeleteFieldInput
+  posts: [TagPostsDeleteFieldInput!]
+  creator: TagCreatorDeleteFieldInput
+}
+
+input TagDisconnectInput {
+  blog: TagBlogDisconnectFieldInput
+  posts: [TagPostsDisconnectFieldInput!]
+  creator: TagCreatorDisconnectFieldInput
+}
+
+input TagOptions {
+  """
+  Specify one or more TagSort objects to sort Tags by. The sorts will be applied in the order in which they are arranged in the array.
+  """
+  sort: [TagSort]
+  limit: Int
+  offset: Int
+}
+
+input TagPostsConnectFieldInput {
+  where: PostConnectWhere
+  connect: [PostConnectInput!]
+}
+
+type TagPostsConnection {
+  edges: [TagPostsRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input TagPostsConnectionSort {
+  node: PostSort
+}
+
+input TagPostsConnectionWhere {
+  AND: [TagPostsConnectionWhere!]
+  OR: [TagPostsConnectionWhere!]
+  node: PostWhere
+  node_NOT: PostWhere
+}
+
+input TagPostsCreateFieldInput {
+  node: PostCreateInput!
+}
+
+input TagPostsDeleteFieldInput {
+  where: TagPostsConnectionWhere
+  delete: PostDeleteInput
+}
+
+input TagPostsDisconnectFieldInput {
+  where: TagPostsConnectionWhere
+  disconnect: PostDisconnectInput
+}
+
+input TagPostsFieldInput {
+  create: [TagPostsCreateFieldInput!]
+  connect: [TagPostsConnectFieldInput!]
+}
+
+type TagPostsRelationship {
+  cursor: String!
+  node: Post!
+}
+
+input TagPostsUpdateConnectionInput {
+  node: PostUpdateInput
+}
+
+input TagPostsUpdateFieldInput {
+  where: TagPostsConnectionWhere
+  update: TagPostsUpdateConnectionInput
+  connect: [TagPostsConnectFieldInput!]
+  disconnect: [TagPostsDisconnectFieldInput!]
+  create: [TagPostsCreateFieldInput!]
+  delete: [TagPostsDeleteFieldInput!]
+}
+
+input TagRelationInput {
+  blog: TagBlogCreateFieldInput
+  posts: [TagPostsCreateFieldInput!]
+  creator: TagCreatorCreateFieldInput
+}
+
+"""
+Fields to sort Tags by. The order in which sorts are applied is not guaranteed when specifying many fields in one TagSort object.
+"""
+input TagSort {
+  id: SortDirection
+  name: SortDirection
+  createdAt: SortDirection
+  updatedAt: SortDirection
+}
+
+input TagUpdateInput {
+  name: String
+  blog: TagBlogUpdateFieldInput
+  posts: [TagPostsUpdateFieldInput!]
+  creator: TagCreatorUpdateFieldInput
+}
+
+input TagWhere {
+  OR: [TagWhere!]
+  AND: [TagWhere!]
+  id: ID
+  id_NOT: ID
+  id_IN: [ID]
+  id_NOT_IN: [ID]
+  id_CONTAINS: ID
+  id_NOT_CONTAINS: ID
+  id_STARTS_WITH: ID
+  id_NOT_STARTS_WITH: ID
+  id_ENDS_WITH: ID
+  id_NOT_ENDS_WITH: ID
+  name: String
+  name_NOT: String
+  name_IN: [String]
+  name_NOT_IN: [String]
+  name_CONTAINS: String
+  name_NOT_CONTAINS: String
+  name_STARTS_WITH: String
+  name_NOT_STARTS_WITH: String
+  name_ENDS_WITH: String
+  name_NOT_ENDS_WITH: String
+  createdAt: DateTime
+  createdAt_NOT: DateTime
+  createdAt_IN: [DateTime]
+  createdAt_NOT_IN: [DateTime]
+  createdAt_LT: DateTime
+  createdAt_LTE: DateTime
+  createdAt_GT: DateTime
+  createdAt_GTE: DateTime
+  updatedAt: DateTime
+  updatedAt_NOT: DateTime
+  updatedAt_IN: [DateTime]
+  updatedAt_NOT_IN: [DateTime]
+  updatedAt_LT: DateTime
+  updatedAt_LTE: DateTime
+  updatedAt_GT: DateTime
+  updatedAt_GTE: DateTime
+  blog: BlogWhere
+  blog_NOT: BlogWhere
+  posts: PostWhere
+  posts_NOT: PostWhere
+  creator: UserWhere
+  creator_NOT: UserWhere
+  blogConnection: TagBlogConnectionWhere
+  blogConnection_NOT: TagBlogConnectionWhere
+  postsConnection: TagPostsConnectionWhere
+  postsConnection_NOT: TagPostsConnectionWhere
+  creatorConnection: TagCreatorConnectionWhere
+  creatorConnection_NOT: TagCreatorConnectionWhere
+}
+
+type UpdateBlogsMutationResponse {
+  blogs: [Blog!]!
+}
+
+type UpdateCommentsMutationResponse {
+  comments: [Comment!]!
+}
+
+type UpdatePostsMutationResponse {
+  posts: [Post!]!
+}
+
+type UpdateTagsMutationResponse {
+  tags: [Tag!]!
+}
+
+type UpdateUsersMutationResponse {
+  users: [User!]!
+}
+
+type User {
+  authorsBlogs(options: BlogOptions, where: BlogWhere): [Blog]
+  authorsBlogsConnection(after: String, first: Int, sort: [UserAuthorsBlogsConnectionSort!], where: UserAuthorsBlogsConnectionWhere): UserAuthorsBlogsConnection!
+  createdAt: DateTime
+  createdBlogs(options: BlogOptions, where: BlogWhere): [Blog]
+  createdBlogsConnection(after: String, first: Int, sort: [UserCreatedBlogsConnectionSort!], where: UserCreatedBlogsConnectionWhere): UserCreatedBlogsConnection!
+  createdTags(options: TagOptions, where: TagWhere): [Tag]
+  createdTagsConnection(after: String, first: Int, sort: [UserCreatedTagsConnectionSort!], where: UserCreatedTagsConnectionWhere): UserCreatedTagsConnection!
+  email: String!
+  id: ID!
+  roles: [UserRole!]!
+  updatedAt: DateTime
+}
+
+input UserAuthorsBlogsConnectFieldInput {
+  where: BlogConnectWhere
+  connect: [BlogConnectInput!]
+}
+
+type UserAuthorsBlogsConnection {
+  edges: [UserAuthorsBlogsRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input UserAuthorsBlogsConnectionSort {
+  node: BlogSort
+}
+
+input UserAuthorsBlogsConnectionWhere {
+  AND: [UserAuthorsBlogsConnectionWhere!]
+  OR: [UserAuthorsBlogsConnectionWhere!]
+  node: BlogWhere
+  node_NOT: BlogWhere
+}
+
+input UserAuthorsBlogsCreateFieldInput {
+  node: BlogCreateInput!
+}
+
+input UserAuthorsBlogsDeleteFieldInput {
+  where: UserAuthorsBlogsConnectionWhere
+  delete: BlogDeleteInput
+}
+
+input UserAuthorsBlogsDisconnectFieldInput {
+  where: UserAuthorsBlogsConnectionWhere
+  disconnect: BlogDisconnectInput
+}
+
+input UserAuthorsBlogsFieldInput {
+  create: [UserAuthorsBlogsCreateFieldInput!]
+  connect: [UserAuthorsBlogsConnectFieldInput!]
+}
+
+type UserAuthorsBlogsRelationship {
+  cursor: String!
+  node: Blog!
+}
+
+input UserAuthorsBlogsUpdateConnectionInput {
+  node: BlogUpdateInput
+}
+
+input UserAuthorsBlogsUpdateFieldInput {
+  where: UserAuthorsBlogsConnectionWhere
+  update: UserAuthorsBlogsUpdateConnectionInput
+  connect: [UserAuthorsBlogsConnectFieldInput!]
+  disconnect: [UserAuthorsBlogsDisconnectFieldInput!]
+  create: [UserAuthorsBlogsCreateFieldInput!]
+  delete: [UserAuthorsBlogsDeleteFieldInput!]
+}
+
+input UserConnectInput {
+  createdBlogs: [UserCreatedBlogsConnectFieldInput!]
+  createdTags: [UserCreatedTagsConnectFieldInput!]
+  authorsBlogs: [UserAuthorsBlogsConnectFieldInput!]
+}
+
+input UserConnectWhere {
+  node: UserWhere!
+}
+
+input UserCreateInput {
+  email: String!
+  roles: [UserRole!]!
+  createdBlogs: UserCreatedBlogsFieldInput
+  createdTags: UserCreatedTagsFieldInput
+  authorsBlogs: UserAuthorsBlogsFieldInput
+}
+
+input UserCreatedBlogsConnectFieldInput {
+  where: BlogConnectWhere
+  connect: [BlogConnectInput!]
+}
+
+type UserCreatedBlogsConnection {
+  edges: [UserCreatedBlogsRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input UserCreatedBlogsConnectionSort {
+  node: BlogSort
+}
+
+input UserCreatedBlogsConnectionWhere {
+  AND: [UserCreatedBlogsConnectionWhere!]
+  OR: [UserCreatedBlogsConnectionWhere!]
+  node: BlogWhere
+  node_NOT: BlogWhere
+}
+
+input UserCreatedBlogsCreateFieldInput {
+  node: BlogCreateInput!
+}
+
+input UserCreatedBlogsDeleteFieldInput {
+  where: UserCreatedBlogsConnectionWhere
+  delete: BlogDeleteInput
+}
+
+input UserCreatedBlogsDisconnectFieldInput {
+  where: UserCreatedBlogsConnectionWhere
+  disconnect: BlogDisconnectInput
+}
+
+input UserCreatedBlogsFieldInput {
+  create: [UserCreatedBlogsCreateFieldInput!]
+  connect: [UserCreatedBlogsConnectFieldInput!]
+}
+
+type UserCreatedBlogsRelationship {
+  cursor: String!
+  node: Blog!
+}
+
+input UserCreatedBlogsUpdateConnectionInput {
+  node: BlogUpdateInput
+}
+
+input UserCreatedBlogsUpdateFieldInput {
+  where: UserCreatedBlogsConnectionWhere
+  update: UserCreatedBlogsUpdateConnectionInput
+  connect: [UserCreatedBlogsConnectFieldInput!]
+  disconnect: [UserCreatedBlogsDisconnectFieldInput!]
+  create: [UserCreatedBlogsCreateFieldInput!]
+  delete: [UserCreatedBlogsDeleteFieldInput!]
+}
+
+input UserCreatedTagsConnectFieldInput {
+  where: TagConnectWhere
+  connect: [TagConnectInput!]
+}
+
+type UserCreatedTagsConnection {
+  edges: [UserCreatedTagsRelationship!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input UserCreatedTagsConnectionSort {
+  node: TagSort
+}
+
+input UserCreatedTagsConnectionWhere {
+  AND: [UserCreatedTagsConnectionWhere!]
+  OR: [UserCreatedTagsConnectionWhere!]
+  node: TagWhere
+  node_NOT: TagWhere
+}
+
+input UserCreatedTagsCreateFieldInput {
+  node: TagCreateInput!
+}
+
+input UserCreatedTagsDeleteFieldInput {
+  where: UserCreatedTagsConnectionWhere
+  delete: TagDeleteInput
+}
+
+input UserCreatedTagsDisconnectFieldInput {
+  where: UserCreatedTagsConnectionWhere
+  disconnect: TagDisconnectInput
+}
+
+input UserCreatedTagsFieldInput {
+  create: [UserCreatedTagsCreateFieldInput!]
+  connect: [UserCreatedTagsConnectFieldInput!]
+}
+
+type UserCreatedTagsRelationship {
+  cursor: String!
+  node: Tag!
+}
+
+input UserCreatedTagsUpdateConnectionInput {
+  node: TagUpdateInput
+}
+
+input UserCreatedTagsUpdateFieldInput {
+  where: UserCreatedTagsConnectionWhere
+  update: UserCreatedTagsUpdateConnectionInput
+  connect: [UserCreatedTagsConnectFieldInput!]
+  disconnect: [UserCreatedTagsDisconnectFieldInput!]
+  create: [UserCreatedTagsCreateFieldInput!]
+  delete: [UserCreatedTagsDeleteFieldInput!]
+}
+
+input UserDeleteInput {
+  createdBlogs: [UserCreatedBlogsDeleteFieldInput!]
+  createdTags: [UserCreatedTagsDeleteFieldInput!]
+  authorsBlogs: [UserAuthorsBlogsDeleteFieldInput!]
+}
+
+input UserDisconnectInput {
+  createdBlogs: [UserCreatedBlogsDisconnectFieldInput!]
+  createdTags: [UserCreatedTagsDisconnectFieldInput!]
+  authorsBlogs: [UserAuthorsBlogsDisconnectFieldInput!]
+}
+
+input UserOptions {
+  """
+  Specify one or more UserSort objects to sort Users by. The sorts will be applied in the order in which they are arranged in the array.
+  """
+  sort: [UserSort]
+  limit: Int
+  offset: Int
+}
+
+input UserRelationInput {
+  createdBlogs: [UserCreatedBlogsCreateFieldInput!]
+  createdTags: [UserCreatedTagsCreateFieldInput!]
+  authorsBlogs: [UserAuthorsBlogsCreateFieldInput!]
+}
+
+enum UserRole {
+  ROLE_ADMIN
+  ROLE_USER
+}
+
+"""
+Fields to sort Users by. The order in which sorts are applied is not guaranteed when specifying many fields in one UserSort object.
+"""
+input UserSort {
+  id: SortDirection
+  email: SortDirection
+  createdAt: SortDirection
+  updatedAt: SortDirection
+}
+
+input UserUpdateInput {
+  email: String
+  roles: [UserRole!]
+  createdBlogs: [UserCreatedBlogsUpdateFieldInput!]
+  createdTags: [UserCreatedTagsUpdateFieldInput!]
+  authorsBlogs: [UserAuthorsBlogsUpdateFieldInput!]
+}
+
+input UserWhere {
+  OR: [UserWhere!]
+  AND: [UserWhere!]
+  id: ID
+  id_NOT: ID
+  id_IN: [ID]
+  id_NOT_IN: [ID]
+  id_CONTAINS: ID
+  id_NOT_CONTAINS: ID
+  id_STARTS_WITH: ID
+  id_NOT_STARTS_WITH: ID
+  id_ENDS_WITH: ID
+  id_NOT_ENDS_WITH: ID
+  email: String
+  email_NOT: String
+  email_IN: [String]
+  email_NOT_IN: [String]
+  email_CONTAINS: String
+  email_NOT_CONTAINS: String
+  email_STARTS_WITH: String
+  email_NOT_STARTS_WITH: String
+  email_ENDS_WITH: String
+  email_NOT_ENDS_WITH: String
+  createdAt: DateTime
+  createdAt_NOT: DateTime
+  createdAt_IN: [DateTime]
+  createdAt_NOT_IN: [DateTime]
+  createdAt_LT: DateTime
+  createdAt_LTE: DateTime
+  createdAt_GT: DateTime
+  createdAt_GTE: DateTime
+  updatedAt: DateTime
+  updatedAt_NOT: DateTime
+  updatedAt_IN: [DateTime]
+  updatedAt_NOT_IN: [DateTime]
+  updatedAt_LT: DateTime
+  updatedAt_LTE: DateTime
+  updatedAt_GT: DateTime
+  updatedAt_GTE: DateTime
+  roles: [UserRole!]
+  roles_NOT: [UserRole!]
+  roles_INCLUDES: UserRole
+  roles_NOT_INCLUDES: UserRole
+  createdBlogs: BlogWhere
+  createdBlogs_NOT: BlogWhere
+  createdTags: TagWhere
+  createdTags_NOT: TagWhere
+  authorsBlogs: BlogWhere
+  authorsBlogs_NOT: BlogWhere
+  createdBlogsConnection: UserCreatedBlogsConnectionWhere
+  createdBlogsConnection_NOT: UserCreatedBlogsConnectionWhere
+  createdTagsConnection: UserCreatedTagsConnectionWhere
+  createdTagsConnection_NOT: UserCreatedTagsConnectionWhere
+  authorsBlogsConnection: UserAuthorsBlogsConnectionWhere
+  authorsBlogsConnection_NOT: UserAuthorsBlogsConnectionWhere
+}

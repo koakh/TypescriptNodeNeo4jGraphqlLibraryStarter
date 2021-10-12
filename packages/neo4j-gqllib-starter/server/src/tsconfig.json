@@ -13,7 +13,7 @@
     "noImplicitAny": false,
     "resolveJsonModule": true,
     // extend base
-    // "baseUrl": "./",
+    "baseUrl": "./",
     "outDir": "../dist",
     "target": "ES2019",
   }

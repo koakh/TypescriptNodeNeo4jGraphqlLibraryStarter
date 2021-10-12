@@ -9,7 +9,8 @@
   "workspaces": [
     "packages/neo4j-gqllib-starter/server",
     "packages/neo4j-gqllib-starter/client",
-    "packages/migration"
+    "packages/migration",
+    "packages/next-frontend"
   ],
   "scripts": {
     "build": "tsc -b",
@@ -21,7 +22,9 @@
     "neo4j-gqllib-starter:server": "yarn workspace neo4j-gqllib-starter-server start",
     "neo4j-gqllib-starter:seed": "yarn workspace neo4j-gqllib-starter-server run seed",
     "neo4j-gqllib-starter:docker:build": "yarn workspace neo4j-gqllib-starter-server run docker:build",
-    "neo4j-gqllib-starter:docker:run": "yarn workspace neo4j-gqllib-starter-server run docker:run"
+    "neo4j-gqllib-starter:docker:run": "yarn workspace neo4j-gqllib-starter-server run docker:run",
+    "next-frontend": "yarn workspace next-frontend run dev",
+    "next-frontend:codegen": "yarn workspace next-frontend run codegen"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "4.29.2",
@@ -46,5 +49,8 @@
     "set-tz": "0.2.0",
     "ts-jest": "^26.5.4",
     "typescript": "3.9.7"
+  },
+  "dependencies": {
+    "next": "^11.1.2"
   }
 }

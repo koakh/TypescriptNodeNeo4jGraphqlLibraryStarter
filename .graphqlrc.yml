@@ -1,0 +1,13 @@
+# notes
+# In case the request fails due to self signed certificate, you can bypass that check by adding this to your settings:
+# "vscode-graphql.rejectUnauthorized": false
+
+# schema: schema.graphql
+schema: https://localhost:5001/graphql
+# documents: '**/*.{graphql,js,ts,jsx,tsx}'
+rejectUnauthorized: true
+extensions:
+  endpoints:
+    default:
+      url: https://localhost:5001/graphql
+      # headers: { Authorization: `Bearer ${process.env.API_TOKEN}` },

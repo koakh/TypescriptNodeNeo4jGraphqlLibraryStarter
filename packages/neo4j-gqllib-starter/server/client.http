@@ -2,8 +2,8 @@
 ### variables
 ### ------------------------------------------------------------------------
 @host = 127.0.0.1
-@port = 5000
-@baseUri = http://{{host}}:{{port}}
+@port = 5001
+@baseUri = https://{{host}}:{{port}}
 @gqlUri = {{baseUri}}/graphql
 @contentType = application/json
 @requestType = GraphQL

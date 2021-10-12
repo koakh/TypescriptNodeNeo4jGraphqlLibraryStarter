@@ -1,9 +1,13 @@
+NextJsFrontend:
+
+
 Server Starter:
   ✔ add debugger @done(21-08-18 22:38)
   ✔ add watch to script @done(21-08-18 22:31)
   ✔ add roles to signIn, createdUsers @done(21-08-19 00:49)
   ✔ add roles to authentication @done(21-08-19 00:49)
   ✔ show neo4j debugger, and post <many> tags, fix CreatePostsMutation @done(21-08-20 22:01)
+  ☐ @critical https
   ☐ server docker image
   ☐ docker-compose with server connected to neo4j
   ☐ seed database script
