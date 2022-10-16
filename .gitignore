@@ -91,7 +91,6 @@ packages/package-tests/**/package-lock.json
 .pnp.*
 
 # custo
-.bak
+.bak/*.tgz
 tsconfig.tsbuildinfo.bak
-volumes/neo4j/data
-volumes/neo4j/caddy
+volumes/neo4j

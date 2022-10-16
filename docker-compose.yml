@@ -1,36 +1,20 @@
 version: '3'
 
 services:
-  caddy:
-    image: caddy:2.4.3
-    restart: unless-stopped
-    ports:
-      - "443:443"
-    environment:
-      - /etc/localtime:/etc/localtime:ro
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
-      - ./volumes/caddy/data:/data
-      - ./volumes/caddy/config:/config
-
-  api-server:
-    image: koakh/neo4j-gqllib-starter-server:latest
-    domainname: kuartzo.com
-    hostname: api-server
-    container_name: server
-    restart: unless-stopped
-    ports:
-      - "8080:8080"
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-    environment:
-      - NEO_USER=neo4j
-      - NEO_PASSWORD=root
-      - NEO_URL=neo4j://neo4j:7687/neo4j
-      - NEO4J_GRAPHQL_JWT_SECRET=supersecret
+  # caddy:
+  #   image: caddy:2.4.3
+  #   restart: unless-stopped
+  #   ports:
+  #     - "443:443"
+  #   environment:
+  #     - /etc/localtime:/etc/localtime:ro
+  #   volumes:
+  #     - ./Caddyfile:/etc/caddy/Caddyfile
+  #     - ./volumes/caddy/data:/data
+  #     - ./volumes/caddy/config:/config
 
   neo4j:
-    image: neo4j:4.0.6-enterprise
+    image: neo4j:4.4.12-enterprise
     domainname: kuartzo.com
     hostname: neo4j
     container_name: neo4j
@@ -47,6 +31,23 @@ services:
       - ./volumes/neo4j/import:/var/lib/neo4j/import
     environment:
       - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
-      - NEO4J_AUTH=neo4j/root
+      # implicit define user/pass on start stack
+      - NEO4J_AUTH=neo4j/neo4jsecret
       - NEO4J_dbms_memory_heap_maxSize=2048
       - NEO4J_dbms_connector_bolt_enabled=true
+
+  # api-server:
+  #   image: koakh/neo4j-gqllib-starter-server:latest
+  #   domainname: kuartzo.com
+  #   hostname: api-server
+  #   container_name: server
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8080:8080"
+  #   volumes:
+  #     - /etc/localtime:/etc/localtime:ro
+  #   environment:
+  #     - NEO_USER=neo4j
+  #     - NEO_PASSWORD=root
+  #     - NEO_URL=neo4j://neo4j:7687/neo4j
+  #     - NEO4J_GRAPHQL_JWT_SECRET=supersecret
