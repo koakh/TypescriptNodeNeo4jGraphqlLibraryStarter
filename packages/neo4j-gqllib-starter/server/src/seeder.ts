@@ -1,9 +1,9 @@
 import faker from 'faker';
 import { appConstants as c } from './app/constants';
-import { createDebugger } from './app/debugger';
+import createDebugger from './app/debugger';
 import * as neo4j from './app/neo4j';
 import { ogm } from './gql';
-import { hashPassword } from './utils/authentication';
+import { hashPassword } from './utils';
 
 const debug = createDebugger('Seeder');
 const User = ogm.model('User');

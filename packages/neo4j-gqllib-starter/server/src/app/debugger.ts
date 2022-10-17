@@ -1,7 +1,7 @@
-import debug from 'debug';
+import debug from "debug";
 
-const main = debug('Server');
+const main = debug("Server");
 
-export function createDebugger(input: string): (...any) => void {
-  return main.extend(input);
+export default function createDebugger(input: string): (...any) => void {
+    return main.extend(input);
 }

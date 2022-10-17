@@ -1,14 +1,13 @@
-import { gql } from 'apollo-server-express';
+import { gql } from "apollo-server-express";
 
 export const typeDefs = gql`
   type Post {
     id: ID! @id
     title: String!
     content: String!
-    blog: Blog @relationship(type: "HAS_POST", direction: IN)
-    comments: [Comment] @relationship(type: "HAS_COMMENT", direction: OUT)
-    tags: [Tag] @relationship(type: "HAS_TAG", direction: OUT)
-    author: User @relationship(type: "WROTE", direction: IN)
+    blog: Blog! @relationship(type: "HAS_POST", direction: IN)
+    comments: [Comment!]! @relationship(type: "HAS_COMMENT", direction: OUT)
+    author: User! @relationship(type: "WROTE", direction: IN)
     canEdit: Boolean
       @cypher(
         statement: """
@@ -31,8 +30,8 @@ export const typeDefs = gql`
         OPTIONAL MATCH (this)<-[:HAS_POST]-(blog:Blog)
         OPTIONAL MATCH (blog)<-[:HAS_BLOG]-(blogCreator:User {id: $auth.jwt.sub})
         WITH (
-            (author IS NOT NULL) OR
-            (blogCreator IS NOT NULL)
+          (author IS NOT NULL) OR
+          (blogCreator IS NOT NULL)
         ) AS canDelete
         RETURN canDelete
         """
@@ -41,47 +40,23 @@ export const typeDefs = gql`
     updatedAt: DateTime @timestamp(operations: [UPDATE])
   }
 
-  # custom resolvers
-  type Query {
-    postSearch(searchString: String!): [Post] @cypher(
-    statement: """
-    CALL db.index.fulltext.queryNodes('postIndex', $searchString+'~')
-    YIELD node RETURN node
-    """)
-  }
-
-  # authentication
   extend type Post
     @auth(
       rules: [
-        # used in seeder
-        { operations: [CREATE,UPDATE,DELETE,CONNECT,DISCONNECT], roles: ["ROLE_ADMIN"] }
         { operations: [CREATE], bind: { author: { id: "$jwt.sub" } } }
         {
           operations: [UPDATE]
           allow: {
             OR: [
               { author: { id: "$jwt.sub" } }
-              {
-                blog: {
-                  OR: [
-                    { creator: { id: "$jwt.sub" } }
-                    { authors: { id: "$jwt.sub" } }
-                  ]
-                }
-              }
+              { blog: { OR: [{ creator: { id: "$jwt.sub" } }, { authors: { id: "$jwt.sub" } }] } }
             ]
           }
         }
         { operations: [CONNECT], isAuthenticated: true }
         {
           operations: [DELETE, DISCONNECT]
-          allow: {
-            OR: [
-              { author: { id: "$jwt.sub" } }
-              { blog: { creator: { id: "$jwt.sub" } } }
-            ]
-          }
+          allow: { OR: [{ author: { id: "$jwt.sub" } }, { blog: { creator: { id: "$jwt.sub" } } }] }
         }
       ]
     )

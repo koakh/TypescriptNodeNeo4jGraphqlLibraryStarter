@@ -1,40 +1,43 @@
 import { Neo4jGraphQL } from '@neo4j/graphql';
 import { OGM } from '@neo4j/graphql-ogm';
+import { Neo4jGraphQLAuthJWTPlugin } from '@neo4j/graphql-plugin-auth';
 import { ApolloServer } from 'apollo-server-express';
 import * as config from '../app/config';
 import { driver } from '../app/neo4j';
-import { Context } from '../types/types';
+import type { Context } from '../types';
 import * as Blog from './Blog';
 import * as Comment from './Comment';
 import * as Post from './Post';
-import * as Tag from './Tag';
 import * as User from './User';
 
-export const typeDefs = [User.typeDefs, Blog.typeDefs, Post.typeDefs, Comment.typeDefs, Tag.typeDefs];
+export const typeDefs = [User.typeDefs, Blog.typeDefs, Post.typeDefs, Comment.typeDefs];
 
 export const resolvers = {
-  // custom resolvers
-  ...User.resolvers,
+    ...User.resolvers,
 };
 
 export const ogm = new OGM({
-  typeDefs,
-  driver,
+    typeDefs,
+    driver,
 });
 
-export const neoSchema = new Neo4jGraphQL({
-  typeDefs,
-  resolvers,
-  config: {
-    jwt: {
-      secret: config.NEO4J_GRAPHQL_JWT_SECRET,
-    },
-  },
-});
+export async function getServer(): Promise<ApolloServer> {
+    await ogm.init();
 
-export const server: ApolloServer = new ApolloServer({
-  context: ({ req }) => ({ ogm, driver, req } as Context),
-  schema: neoSchema.schema,
-  introspection: true,
-  debug: true,
-});
+    const neoSchema = new Neo4jGraphQL({
+        typeDefs,
+        resolvers,
+        plugins: {
+            auth: new Neo4jGraphQLAuthJWTPlugin({
+                secret: config.NEO4J_GRAPHQL_JWT_SECRET,
+            }),
+        },
+    });
+
+    const server: ApolloServer = new ApolloServer({
+        schema: await neoSchema.getSchema(),
+        context: ({ req }) => ({ ogm, driver, req } as Context),
+    });
+
+    return server;
+}

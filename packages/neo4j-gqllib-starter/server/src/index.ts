@@ -1,4 +1,4 @@
-import { createDebugger } from './app/debugger';
+import createDebugger from './app/debugger';
 import * as neo4j from './app/neo4j';
 import * as server from './server';
 
