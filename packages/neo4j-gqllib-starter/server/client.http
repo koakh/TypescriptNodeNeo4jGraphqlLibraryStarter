@@ -84,7 +84,8 @@ mutation CreateUsersMutation($createUsersInput: [UserCreateInput!]!) {
         "create": [
           {
             "node": {
-              "name": "KapaBlog"
+              "name": "KapaBlog",
+              "description": "yet another notes blog..."
             }
           }
         ]
@@ -198,7 +199,7 @@ query GetBlogsQuery($blogsWhere: BlogWhere) {
 
 {
   "blogsWhere": {
-    "name": "blog1"
+    "name": "blog2"
   }
 }
 
@@ -230,7 +231,7 @@ query GetTagsQuery($tagsWhere: TagWhere) {
 {
   "tagsWhere": {
     "blog": {
-      "name": "blog1"
+      "name": "blog2"
     }
   }
 }
