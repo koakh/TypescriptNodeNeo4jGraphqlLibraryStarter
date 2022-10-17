@@ -1,5 +1,13 @@
-NextJsFrontend:
+New Start Working with Project Changes:
+  ☐ New Update Server
+  ☐ backup project and replace files from
+    https://github.com/neo4j/graphql/tree/dev/examples/neo-push
+    next figure out what changes we need in current project
+  ☐ update all packages to latest versions or versions from current neo-push
+  ☐ refactor main package.json script keys
+  ☐ NextJs and Frontend working
 
+NextJsFrontend:
 
 Server Starter:
   ✔ add debugger @done(21-08-18 22:38)
