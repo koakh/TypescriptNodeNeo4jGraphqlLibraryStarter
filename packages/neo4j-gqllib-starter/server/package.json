@@ -5,7 +5,7 @@
   "description": "",
   "main": "./dist/src/index.js",
   "scripts": {
-    "start": "DEBUG=@neo4j/graphql:execute nodemon --watch './src/**/*.ts' --exec ../../../node_modules/.bin/ts-node -r tsconfig-paths/register --project ./src/tsconfig.json ./src/index.ts",
+    "start": "DEBUG='@neo4j/graphql:execute,Server:*,Neo4j:*' nodemon --watch '.--inspect /src/**/*.ts' --exec ../../../node_modules/.bin/ts-node -r tsconfig-paths/register --project ./src/tsconfig.json ./src/index.ts",
     "build": "tsc  --project src/",
     "seed": "ts-node -r tsconfig-paths/register --project ./src/tsconfig.json ./src/seeder.ts",
     "test": "jest",

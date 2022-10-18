@@ -10,7 +10,7 @@ import * as graphql from './gql';
 
 export const app = express();
 
-const debug = createDebugger('HTTP');
+const debug = createDebugger('Server');
 
 // compose https options
 const httpsOptions = {
@@ -50,7 +50,7 @@ export async function start(): Promise<void> {
       methods: 'POST',
       credentials: true
       // preflightContinue: true,
-    }
+    },
   });
 
   return new Promise((resolve, reject): void => {

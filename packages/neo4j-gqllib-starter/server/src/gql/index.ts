@@ -13,31 +13,37 @@ import * as User from './User';
 export const typeDefs = [User.typeDefs, Blog.typeDefs, Post.typeDefs, Comment.typeDefs];
 
 export const resolvers = {
-    ...User.resolvers,
+  ...User.resolvers,
 };
 
 export const ogm = new OGM({
-    typeDefs,
-    driver,
+  typeDefs,
+  driver,
 });
 
 export async function getServer(): Promise<ApolloServer> {
-    await ogm.init();
+  await ogm.init();
 
-    const neoSchema = new Neo4jGraphQL({
-        typeDefs,
-        resolvers,
-        plugins: {
-            auth: new Neo4jGraphQLAuthJWTPlugin({
-                secret: config.NEO4J_GRAPHQL_JWT_SECRET,
-            }),
-        },
-    });
+  const neoSchema = new Neo4jGraphQL({
+    typeDefs,
+    resolvers,
+    plugins: {
+      auth: new Neo4jGraphQLAuthJWTPlugin({
+        secret: config.NEO4J_GRAPHQL_JWT_SECRET,
+      }),
+    },
+  });
 
-    const server: ApolloServer = new ApolloServer({
-        schema: await neoSchema.getSchema(),
-        context: ({ req }) => ({ ogm, driver, req } as Context),
-    });
+  const server: ApolloServer = new ApolloServer({
+    schema: await neoSchema.getSchema(),
+    context: ({ req }) => ({ ogm, driver, req } as Context),
+    formatError: (err) => {
+      if (err.extensions.code === 'INTERNAL_SERVER_ERROR') {
+        return new Error(err.message);
+      }
+      return err;
+    },
+  });
 
-    return server;
+  return server;
 }
