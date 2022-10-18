@@ -2634,6 +2634,7 @@ __metadata:
     set-tz: 0.2.0
     ts-jest: ^26.5.4
     typescript: 3.9.7
+    yarn: ^1.22.11
   languageName: unknown
   linkType: soft
 
@@ -20745,6 +20746,16 @@ typescript@4.8.4:
     yarn: bin/yarn.js
     yarnpkg: bin/yarn.js
   checksum: b43d2cc5fee7e933beb12a8aee7dfceca9e9ef2dd17c5d04d15a12ab7bec5f5744ea34a07b86e013da7f291a18c4e1ad8f70e150f5ed2f4666e6723c7f0a8452
+  languageName: node
+  linkType: hard
+
+"yarn@npm:^1.22.11":
+  version: 1.22.11
+  resolution: "yarn@npm:1.22.11"
+  bin:
+    yarn: ./bin/yarn.js
+    yarnpkg: ./bin/yarn.js
+  checksum: 6c3cf39095982bad5eb134b60a13dd09a94783d481d17c44c1fba34b844904352c4ef43ef35038e7d3677a49b7140b5fce0c038d08c63beed364c064b84e5dca
   languageName: node
   linkType: hard
 

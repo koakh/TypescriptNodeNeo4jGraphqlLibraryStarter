@@ -96,7 +96,7 @@ DEBUG=Server:*
 NEO_USER=neo4j
 NEO_PASSWORD=password
 NEO_URL=neo4j://localhost:7687/neo4j
-NEO4J_GRAPHQL_JWT_SECRET=supersecret
+NEO_GRAPHQL_JWT_SECRET=supersecret
 ```
 
 > don't forget to change default username to `admin` to `neo4j`
