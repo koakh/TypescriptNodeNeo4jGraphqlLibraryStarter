@@ -17,7 +17,7 @@ function server(driver, context = {}) {
     resolvers,
     config: {
       jwt: {
-        secret: config.NEO4J_GRAPHQL_JWT_SECRET,
+        secret: config.NEO_GRAPHQL_JWT_SECRET,
       },
     },
   });

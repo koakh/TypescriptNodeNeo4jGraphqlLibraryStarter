@@ -50,4 +50,4 @@ services:
   #     - NEO_USER=neo4j
   #     - NEO_PASSWORD=root
   #     - NEO_URL=neo4j://neo4j:7687/neo4j
-  #     - NEO4J_GRAPHQL_JWT_SECRET=supersecret
+  #     - NEO_GRAPHQL_JWT_SECRET=supersecret

@@ -3,7 +3,7 @@ import * as config from '../app/config';
 
 function createJWT(data: { sub: string }): Promise<string> {
   return new Promise((resolve, reject) => {
-    jwt.sign(data, config.NEO4J_GRAPHQL_JWT_SECRET, (err, token) => {
+    jwt.sign(data, config.NEO_GRAPHQL_JWT_SECRET, (err, token) => {
       if (err) {
         return reject(err);
       }

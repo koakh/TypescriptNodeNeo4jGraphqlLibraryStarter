@@ -84,8 +84,7 @@ mutation CreateUsersMutation($createUsersInput: [UserCreateInput!]!) {
         "create": [
           {
             "node": {
-              "name": "KapaBlog",
-              "description": "yet another notes blog..."
+              "name": "KapaBlog"
             }
           }
         ]
