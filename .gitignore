@@ -97,5 +97,6 @@ tsconfig.tsbuildinfo.bak
 volumes/neo4j/data
 volumes/neo4j/import
 volumes/neo4j/logs
+volumes/neo4j/plugins
 volumes/caddy/config/caddy/
 volumes/caddy/data/
