@@ -5,7 +5,7 @@ export const typeDefs = gql`
     id: ID! @id
     name: String!
     blog: Blog @relationship(type: "HAS_TAG", direction: IN)
-    posts: [Post] @relationship(type: "HAS_TAG", direction: IN)
+    posts: [Post!]! @relationship(type: "HAS_TAG", direction: IN)
     creator: User @relationship(type: "CREATE", direction: IN)
     canEdit: Boolean
       @cypher(

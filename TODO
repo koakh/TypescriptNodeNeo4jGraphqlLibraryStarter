@@ -1,4 +1,5 @@
 New Start Working with Project Changes:
+  ☐ add typescript name alias ex @src/
   ☐ New Update Server
   ☐ backup project and replace files from
     https://github.com/neo4j/graphql/tree/dev/examples/neo-push

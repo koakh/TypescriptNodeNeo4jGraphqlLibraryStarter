@@ -1,7 +1,8 @@
 import jwt from 'jsonwebtoken';
+import { UserRole } from '../types';
 import * as config from '../app/config';
 
-function createJWT(data: { sub: string }): Promise<string> {
+export function createJWT(data: { sub: string, roles: [UserRole] }): Promise<string> {
   return new Promise((resolve, reject) => {
     jwt.sign(data, config.NEO_GRAPHQL_JWT_SECRET, (err, token) => {
       if (err) {

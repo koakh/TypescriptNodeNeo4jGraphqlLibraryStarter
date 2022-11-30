@@ -92,6 +92,7 @@ packages/package-tests/**/package-lock.json
 
 # custo
 .bak/*.tgz
+.bak/*.jar
 tsconfig.tsbuildinfo.bak
 volumes/neo4j/data
 volumes/neo4j/import

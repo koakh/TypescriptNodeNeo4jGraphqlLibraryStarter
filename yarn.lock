@@ -1727,7 +1727,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@faker-js/faker@npm:7.6.0":
+"@faker-js/faker@npm:^7.6.0":
   version: 7.6.0
   resolution: "@faker-js/faker@npm:7.6.0"
   checksum: 942af6221774e8c98a0eb6bc75265e05fb81a941170377666c3439aab9495dd321d6beedc5406f07e6ad44262b3e43c20961f666d116ad150b78e7437dd1bb2b
@@ -2628,13 +2628,11 @@ __metadata:
     jest: 26.6.3
     lint-staged: 10.2.11
     neo4j-driver: ^4.2.3
-    next: ^11.1.2
     npm-run-all: 4.1.5
     prettier: 2.1.2
     set-tz: 0.2.0
     ts-jest: ^26.5.4
     typescript: 3.9.7
-    yarn: ^1.22.11
   languageName: unknown
   linkType: soft
 
@@ -9550,13 +9548,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"faker@npm:6.6.6":
-  version: 6.6.6
-  resolution: "faker@npm:6.6.6"
-  checksum: bfb0d581ab4d76095f2c6bff213fe1735ce077f0f8df849c144ad26035e105bce1b7a704cc030366338c52e25b636ac097a712426a78c9b8804af78f6f2bffe7
-  languageName: node
-  linkType: hard
-
 "fast-deep-equal@npm:^3.1.1, fast-deep-equal@npm:^3.1.3":
   version: 3.1.3
   resolution: "fast-deep-equal@npm:3.1.3"
@@ -14700,40 +14691,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"neo-push-client@workspace:packages/neo4j-gqllib-starter/client":
-  version: 0.0.0-use.local
-  resolution: "neo-push-client@workspace:packages/neo4j-gqllib-starter/client"
-  dependencies:
-    "@apollo/client": 3.7.0
-    "@fortawesome/fontawesome-svg-core": 6.2.0
-    "@fortawesome/free-solid-svg-icons": 6.2.0
-    "@fortawesome/react-fontawesome": 0.2.0
-    "@tsconfig/create-react-app": 1.0.2
-    "@types/react-dom": 18.0.6
-    "@types/react-router-dom": 5.3.3
-    "@types/showdown": 2.0.0
-    "@webpack-cli/serve": 1.7.0
-    css-loader: 6.7.1
-    dotenv-webpack: 7.1.1
-    file-loader: 6.2.0
-    graphql: 16.6.0
-    html-webpack-plugin: 5.5.0
-    react: 18.2.0
-    react-bootstrap: 2.5.0
-    react-dom: 18.2.0
-    react-markdown: 8.0.3
-    react-mde: 11.5.0
-    react-router-dom: 6.4.2
-    showdown: 2.1.0
-    style-loader: 3.3.1
-    ts-loader: 9.4.1
-    typescript: 4.8.4
-    webpack: 5.74.0
-    webpack-cli: 4.10.0
-    webpack-dev-server: 4.11.1
-  languageName: unknown
-  linkType: soft
-
 "neo4j-driver-bolt-connection@npm:^4.3.3":
   version: 4.3.3
   resolution: "neo4j-driver-bolt-connection@npm:4.3.3"
@@ -14793,11 +14750,45 @@ __metadata:
   languageName: node
   linkType: hard
 
+"neo4j-gqllib-starter-client@workspace:packages/neo4j-gqllib-starter/client":
+  version: 0.0.0-use.local
+  resolution: "neo4j-gqllib-starter-client@workspace:packages/neo4j-gqllib-starter/client"
+  dependencies:
+    "@apollo/client": 3.7.0
+    "@fortawesome/fontawesome-svg-core": 6.2.0
+    "@fortawesome/free-solid-svg-icons": 6.2.0
+    "@fortawesome/react-fontawesome": 0.2.0
+    "@tsconfig/create-react-app": 1.0.2
+    "@types/react-dom": 18.0.6
+    "@types/react-router-dom": 5.3.3
+    "@types/showdown": 2.0.0
+    "@webpack-cli/serve": 1.7.0
+    css-loader: 6.7.1
+    dotenv-webpack: 7.1.1
+    file-loader: 6.2.0
+    graphql: 16.6.0
+    html-webpack-plugin: 5.5.0
+    react: 18.2.0
+    react-bootstrap: 2.5.0
+    react-dom: 18.2.0
+    react-markdown: 8.0.3
+    react-mde: 11.5.0
+    react-router-dom: 6.4.2
+    showdown: 2.1.0
+    style-loader: 3.3.1
+    ts-loader: 9.4.1
+    typescript: 4.8.4
+    webpack: 5.74.0
+    webpack-cli: 4.10.0
+    webpack-dev-server: 4.11.1
+  languageName: unknown
+  linkType: soft
+
 "neo4j-gqllib-starter-server@workspace:packages/neo4j-gqllib-starter/server":
   version: 0.0.0-use.local
   resolution: "neo4j-gqllib-starter-server@workspace:packages/neo4j-gqllib-starter/server"
   dependencies:
-    "@faker-js/faker": 7.6.0
+    "@faker-js/faker": ^7.6.0
     "@neo4j/graphql": 3.10.1
     "@neo4j/graphql-ogm": 3.10.1
     "@neo4j/graphql-plugin-auth": 1.1.0
@@ -14817,7 +14808,6 @@ __metadata:
     dotenv: 16.0.3
     express: 4.18.2
     express-rate-limit: 6.6.0
-    faker: 6.6.6
     graphql: 16.6.0
     jest: 29.2.0
     jsonwebtoken: 8.5.1
@@ -14870,7 +14860,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"next@npm:11.1.2, next@npm:^11.1.2":
+"next@npm:11.1.2":
   version: 11.1.2
   resolution: "next@npm:11.1.2"
   dependencies:
@@ -20746,16 +20736,6 @@ typescript@4.8.4:
     yarn: bin/yarn.js
     yarnpkg: bin/yarn.js
   checksum: b43d2cc5fee7e933beb12a8aee7dfceca9e9ef2dd17c5d04d15a12ab7bec5f5744ea34a07b86e013da7f291a18c4e1ad8f70e150f5ed2f4666e6723c7f0a8452
-  languageName: node
-  linkType: hard
-
-"yarn@npm:^1.22.11":
-  version: 1.22.11
-  resolution: "yarn@npm:1.22.11"
-  bin:
-    yarn: ./bin/yarn.js
-    yarnpkg: ./bin/yarn.js
-  checksum: 6c3cf39095982bad5eb134b60a13dd09a94783d481d17c44c1fba34b844904352c4ef43ef35038e7d3677a49b7140b5fce0c038d08c63beed364c064b84e5dca
   languageName: node
   linkType: hard
 

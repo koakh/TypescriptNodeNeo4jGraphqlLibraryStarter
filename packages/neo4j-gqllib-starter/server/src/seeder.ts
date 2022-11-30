@@ -1,8 +1,8 @@
-import faker from 'faker';
+import { faker } from '@faker-js/faker';
+import { ogm } from './gql';
 import { appConstants as c } from './app/constants';
 import createDebugger from './app/debugger';
 import * as neo4j from './app/neo4j';
-import { ogm } from './gql';
 import { hashPassword } from './utils';
 
 const debug = createDebugger('Seeder');
@@ -18,6 +18,8 @@ async function main() {
   debug('Seeding Started');
 
   await neo4j.connect();
+
+  await ogm.init();
 
   await Promise.all([User, Blog, Post, Comment].map((m) => m.delete({})));
 
@@ -40,8 +42,7 @@ async function main() {
   await Blog.create({
     input: users.map((user) => {
       return {
-        name: faker.lorem.word(6),
-        description: faker.lorem.paragraph(),
+        name: faker.lorem.word(),
         creator: {
           connect: { where: { node: { id: user.id } } },
         },
@@ -63,27 +64,13 @@ async function main() {
                       author: {
                         connect: { where: { node: { id: u.id } } },
                       },
-                    }
+                    },
                   };
                 }),
               },
-            }
+            },
           })),
         },
-        tags: {
-          create: new Array(3).fill(null).map(() => {
-            const u = users[Math.floor(Math.random() * users.length)];
-
-            return {
-              node: {
-                name: faker.name.jobType(),
-                creator: {
-                  connect: { where: { node: { id: u.id } } },
-                },
-              }
-            };
-          })
-        }
       };
     }),
   });

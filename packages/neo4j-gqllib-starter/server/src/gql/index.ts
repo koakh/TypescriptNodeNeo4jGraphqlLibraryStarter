@@ -8,9 +8,10 @@ import type { Context } from '../types';
 import * as Blog from './Blog';
 import * as Comment from './Comment';
 import * as Post from './Post';
+import * as Tag from './Tag';
 import * as User from './User';
 
-export const typeDefs = [User.typeDefs, Blog.typeDefs, Post.typeDefs, Comment.typeDefs];
+export const typeDefs = [User.typeDefs, Blog.typeDefs, Post.typeDefs, Comment.typeDefs, Tag.typeDefs];
 
 export const resolvers = {
   ...User.resolvers,

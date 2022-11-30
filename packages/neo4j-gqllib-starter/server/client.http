@@ -11,6 +11,7 @@
 
 @someBlogId = b1ad979e-a5e2-48d2-a7d3-e33876f0a3b7
 @adminUserEmail = admin@admin.com
+@adminUserPassword = password
 
 ### SignUpMutation
 // @name SignUpMutation
@@ -43,7 +44,7 @@ mutation SignInMutation($signUpEmail: String!, $signUpPassword: String!) {
 
 {
   "signUpEmail": "{{adminUserEmail}}",
-  "signUpPassword": "password"
+  "signUpPassword": "{{adminUserPassword}}"
 }
 
 ### CreateUsersMutation
@@ -76,7 +77,7 @@ mutation CreateUsersMutation($createUsersInput: [UserCreateInput!]!) {
 {
   "createUsersInput": [
     {
-      "email": "kapa@example.com",
+      "email": "pelu@example.com",
       "roles": [
         "ROLE_USER"
       ],
@@ -84,7 +85,8 @@ mutation CreateUsersMutation($createUsersInput: [UserCreateInput!]!) {
         "create": [
           {
             "node": {
-              "name": "KapaBlog"
+              "name": "PeluBlog",
+              "description": "yet another notes blog..."
             }
           }
         ]

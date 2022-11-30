@@ -20,6 +20,7 @@ const httpsOptions = {
   key: fs.readFileSync(`./config/${config.HTTPS_SERVER_KEY}`),
 };
 
+// TODO: how to use limiter
 // limiter middleware
 const limiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
@@ -73,6 +74,7 @@ export async function start(): Promise<void> {
             resolve();
           });
       }
+      debug(`cors ${config.CORS_ORIGIN}`);
     } catch (error) {
       reject(error);
     }

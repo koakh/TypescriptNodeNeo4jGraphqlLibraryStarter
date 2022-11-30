@@ -30,10 +30,14 @@ download [apoc](https://neo4j.com/labs/apoc/4.4/installation/)
 ```shell
 $ mkdir volumes/neo4j/plugins/ -p
 $ sudo mv ~/Downloads/apoc-4.4.0.1-all.jar volumes/neo4j/plugins/
+# add neo4j access, default is using bellow user:group
+$ sudo chown 7474:7474 volumes/neo4j/ -R
 $ docker-compose up -d
 ```
 
 ### Launch initial indexs and constraints
+
+this is inSync with file `init.cypher`
 
 ```cypher
 // index's
@@ -49,6 +53,8 @@ SHOW CONSTRAINT;
 ```
 
 ### Seed Database
+
+`packages/neo4j-gqllib-starter/server/src/seeder.ts`
 
 > required APOC plugin
 
@@ -77,9 +83,13 @@ NEO4J_PASSWORD="neo4jsecret"
 ## Run Server and Client
 
 ```shell
-$ neo4j-gqllib-starter
+$ yarn neo4j-gqllib-starter
+# or just server
+$ yarn neo4j-gqllib-starter:server
 ```
 
 - open graphql expolorer at <https://localhost:5001/graphql>
+- open frontend <http://localhost:5000>
 
-http://localhost:5000
+- defaultEmail = admin@admin.com
+- defaultPassword = password
