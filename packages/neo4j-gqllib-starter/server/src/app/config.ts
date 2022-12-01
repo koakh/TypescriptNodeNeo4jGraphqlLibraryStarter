@@ -4,7 +4,7 @@ dotenv.config();
 
 export const HTTP_SERVER_PORT = Number(process.env.HTTP_SERVER_PORT || 5000);
 export const HTTPS_SERVER_PORT = Number(process.env.HTTPS_SERVER_PORT || 5001);
-export const HTTPS_SERVER = !!process.env.CORS_ORIGIN as boolean || false;
+export const HTTPS_SERVER = !!process.env.CORS_ORIGIN || false;
 export const CORS_ORIGIN = process.env.CORS_ORIGIN as string || 'http://localhost:4000';
 export const NODE_ENV = process.env.NODE_ENV as string;
 export const NEO_USER: string = process.env.NEO_USER || 'admin';
