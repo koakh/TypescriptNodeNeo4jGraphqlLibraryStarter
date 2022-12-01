@@ -60,6 +60,6 @@ module.exports = {
       directory: path.join(__dirname, "dist"),
     },
     compress: true,
-    port: Number(process.env.DEV_SERVER_PORT || 4000),
+    port: Number(process.env.DEV_SERVER_PORT || 4001),
   },
 };

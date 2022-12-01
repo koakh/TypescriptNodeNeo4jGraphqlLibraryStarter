@@ -528,9 +528,4 @@ RETURN isCreator
 
 ##  Next React
 
-follow notes on [NOTES](packages/next-frontend/NOTES.md)
-
-## Planning
-
-- [-] ionic5
-- [-] 
+follow notes on [NOTES_FRONTEND](packages/next-frontend/NOTES_FRONTEND.md)

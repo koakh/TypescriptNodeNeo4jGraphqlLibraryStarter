@@ -1,4 +1,3 @@
-import React from "react";
 import { Card, Row, Container } from "react-bootstrap";
 import * as markdown from "./Markdown";
 
@@ -13,17 +12,17 @@ Example blog site built with \`@neo4j/graphql\` & React.js. This application sho
 `;
 
 function Home() {
-    return (
-        <Container>
-            <div className="p-3">
-                <Row>
-                    <Card className="m-0 p-3">
-                        <markdown.Render markdown={content} />
-                    </Card>
-                </Row>
-            </div>
-        </Container>
-    );
+  return (
+    <Container>
+      <div className="p-3">
+        <Row>
+          <Card className="m-0 p-3">
+            <markdown.Render markdown={content} />
+          </Card>
+        </Row>
+      </div>
+    </Container>
+  );
 }
 
 export default Home;

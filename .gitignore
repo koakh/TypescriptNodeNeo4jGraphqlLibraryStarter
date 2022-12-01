@@ -90,7 +90,9 @@ packages/package-tests/**/package-lock.json
 !.yarn/versions
 .pnp.*
 
-# custo
+# custom
+.removed
+.src
 .bak/*.tgz
 .bak/*.jar
 tsconfig.tsbuildinfo.bak
