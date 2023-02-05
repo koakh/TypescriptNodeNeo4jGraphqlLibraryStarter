@@ -1,8 +1,8 @@
 import { faker } from '@faker-js/faker';
-import { ogm } from './gql';
 import { appConstants as c } from './app/constants';
 import createDebugger from './app/debugger';
 import * as neo4j from './app/neo4j';
+import { ogm } from './gql';
 import { hashPassword } from './utils';
 
 const debug = createDebugger('Seeder');
@@ -57,7 +57,6 @@ async function main() {
               comments: {
                 create: new Array(3).fill(null).map(() => {
                   const u = users[Math.floor(Math.random() * users.length)];
-
                   return {
                     node: {
                       content: faker.lorem.paragraph(),

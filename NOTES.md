@@ -27,10 +27,16 @@
 
 ## TLDR Start Project
 
-1. start neo4j desktop neopush database
+1. start neo4j instance 
+  1.1. start neo4j desktop neopush database
+  1.2. or use docker-compose
+      double check that `volumes/neo4j/plugins/apoc-4.4.0.1-all.jar` is present
+      else `cp .neo4jplugins/apoc-4.4.0.1-all.jar volumes/neo4j/plugins/`
+      `docker-compose up -d`  and `npm run neo4j-gqllib-starter:seed`
 2. yarn run neo4j-gqllib-starter
-3. open [Apollo Explorer](http://localhost:5000/graphql)
-1. launch operation on **explorer** or in **rest client** in `client.http`
+3. open [Apollo Explorer Http](http://localhost:5000/graphql) or [Apollo Explorer Https](https://localhost:5001/graphql)
+1. launch operation on **explorer** 
+   or in **rest client** in `client.http`
 
 ```gql
 mutation SignInMutation($email: String!, $password: String!) {
